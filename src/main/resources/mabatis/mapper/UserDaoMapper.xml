@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.winter.background.dao.UserDao">
+    <insert id="insertUser">
+        insert into user values(
+        #{userId},
+        #{userNickname},
+        #{password},
+        #{userSex},
+        #{userPhone},
+        #{userMail},
+        #{userDeptId},
+        #{userStatus},
+        #{userRegestertime},
+        #{userPower}
+        )
+    </insert>
+    <update id="updateUser"></update>
+
+    <select id="getUserByExample" resultType="com.winter.background.domain.User">
+        select * from user
+        <where>
+            <if test="userId!=null">
+                userid = #{userId} AND
+            </if>
+            <if test="userNickname!=null">
+                userNickname = #{userNickname} AND
+            </if>
+            <if test="password!=null">
+                password = #{password} AND
+            </if>
+            <if test="userSex!=null">
+                userSex = #{userSex} AND
+            </if>
+            <if test="userPhone!=null">
+                userPhone = #{userPhone} AND
+            </if>
+            <if test="userMail!=null">
+                userMail = #{userMail} AND
+            </if>
+            <if test="userDeptId!=null">
+                userDeptId = #{userDeptId} AND
+            </if>
+            <if test="userStatus!=null">
+                userStatus = #{userStatus} AND
+            </if>
+            <if test="userRegestertime!=null">
+                userRegestertime = #{userRegestertime} AND
+            </if>
+            <if test="userPower!=null">
+                userPower = #{userPower}
+            </if>
+        </where>
+    </select>
+</mapper>
