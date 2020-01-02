@@ -1,6 +1,8 @@
 package com.winter.background;
 
 import com.winter.background.dao.UserDao;
+import com.winter.background.dao.DeptDao;
+import com.winter.background.domain.Dept;
 import com.winter.background.domain.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,9 +17,11 @@ import java.util.List;
 public class Tes1t {
     @Autowired
     UserDao userDao;
+    @Autowired
+    DeptDao deptDao;
     @Test
     public void test(){
-        List<User> userByExample = userDao.getUserByExample(new User());
-
+//        List<User> userByExample = userDao.getUserByExample(new User());
+        List<Dept> deptByExample = deptDao.getDeptByExample(new Dept());
     }
 }

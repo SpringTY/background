@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.winter.background.dao.DeptDao">
+    <insert id="insertDept">
+        insert into dept values (
+        #{deptid},
+        #{deptregionid},
+        #{deptname},
+        #{deptregionname}
+        )
+    </insert>
+
+    <update id="updateDept">
+
+    </update>
+
+    <select id="getDeptByExample" resultType="com.winter.background.domain.Dept">
+        select * from dept
+        <where>
+            <if test="deptId!=null">
+                deptid = #{deptId} AND
+            </if>
+            <if test="deptRegionId!=null">
+                deptregionid = #{deptRegionId} AND
+            </if>
+            <if test="deptName!=null">
+                deptname = #{deptName} AND
+            </if>
+            <if test="deptRegionName!=null">
+                deptregionname = #{deptRegionName}
+            </if>
+        </where>
+    </select>
+
+</mapper>
