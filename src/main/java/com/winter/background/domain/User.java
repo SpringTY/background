@@ -15,8 +15,34 @@ public class User {
     String userSex;
     Integer userPhone;
     String userMail;
-    String userDeptId;
+    Integer userDeptId;
     String userStatus;
     Date userRegestertime;
     String UserPower;
+    //private List<User> authorities;
+
+//    @Override
+//    public String getUsername() {
+//        return this.userName;
+//    }
+//
+//    @Override
+//    public boolean isAccountNonExpired() {
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean isAccountNonLocked() {
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean isCredentialsNonExpired() {
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean isEnabled() {
+//        return true;
+//    }
 }

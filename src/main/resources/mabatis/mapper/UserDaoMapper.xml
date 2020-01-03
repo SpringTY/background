@@ -6,6 +6,7 @@
     <insert id="insertUser">
         insert into user values(
         #{userId},
+        #{userName},
         #{userNickname},
         #{password},
         #{userSex},
@@ -17,7 +18,39 @@
         #{userPower}
         )
     </insert>
-    <update id="updateUser"></update>
+    <update id="updateUser">
+        update user
+        <set>
+            <if test="userNickname!=null">
+                userNickname = #{userNickname} ,
+            </if>
+            <if test="password!=null">
+                password = #{password} ,
+            </if>
+            <if test="userSex!=null">
+                userSex = #{userSex} ,
+            </if>
+            <if test="userPhone!=null">
+                userPhone = #{userPhone} ,
+            </if>
+            <if test="userMail!=null">
+                userMail = #{userMail} ,
+            </if>
+            <if test="userDeptId!=null">
+                userDeptId = #{userDeptId} ,
+            </if>
+            <if test="userStatus!=null">
+                userStatus = #{userStatus} ,
+            </if>
+            <if test="userRegestertime!=null">
+                userRegestertime = #{userRegestertime} ,
+            </if>
+            <if test="userPower!=null">
+                userPower = #{userPower}
+            </if>
+        </set>
+        where userid = #{userId}
+    </update>
 
     <select id="getUserByExample" resultType="com.winter.background.domain.User">
         select * from user
