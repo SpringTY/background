@@ -129,7 +129,7 @@
                                 class="ion ion-ios-albums-outline"></i><span>用户管理</span></a>
                         <ul class="menu-dropdown">
                             <li><a href="/indexAction"><i class="ion ion-ios-circle-outline"></i> 用户列表</a></li>
-                            <li><a href="/userAddAction"><i class="ion ion-ios-circle-outline"></i> 添加用户</a>
+                            <li><a href="com"><i class="ion ion-ios-circle-outline"></i> 添加用户</a>
                             </li>
                             <li><a href="buttons.html"><i class="ion ion-ios-circle-outline"></i> 查找用户</a></li>
                             <li><a href="toastr.html"><i class="ion ion-ios-circle-outline"></i> 修改用户</a></li>
@@ -211,89 +211,121 @@
         <div class="main-content">
             <section class="section">
                 <h1 class="section-header">
-                    <div>用户信息</div>
+                    <div>添加用户</div>
                 </h1>
                 <div class="section-body">
                     <div class="row">
                         <div class="col-12 col-md-12 col-lg-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4>用户列表</h4>
-                                </div>
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered">
-                                            <tr>
-                                                <th>id</th>
-                                                <th>用户名</th>
-                                                <th>昵称</th>
-                                                <th>性别</th>
-                                                <th>邮箱</th>
-                                                <th>部门</th>
-                                                <th>状态</th>
-                                                <th>注册时间</th>
-                                                <th>权限</th>
-                                                <th>操作</th>
-                                            </tr>
-                                            <!--<tr th:each="item:${UsersInfo}">-->
-                                            <!--<td th:text="${item.userId}"></td>-->
-                                            <!--<td th:text="${item.userName}"></td>-->
-                                            <!--<td th:text="${item.userNickname}"></td>-->
-                                            <!--<td th:text="${item.userSex}"></td>-->
-                                            <!--<td th:text="${item.userMail}"></td>-->
-                                            <!--<td th:text="${item.deptName}"></td>-->
-                                            <!--<td>-->
-                                            <!--&lt;!&ndash;<td th:text="${item.userStatus}"></td>&ndash;&gt;-->
-                                            <!--<div th:if="${item.userStatus eq '1'}"class="badge badge-success">-->
-                                            <!--允许登录-->
-                                            <!--</div>-->
-                                            <!--<div th:if="${item.userStatus eq '0'}"class="badge badge-danger">-->
-                                            <!--关闭账号-->
-                                            <!--</div>-->
-                                            <!--</td>-->
-                                            <!--<td th:text="${item.userRegestertime}"></td>-->
-                                            <!--</tr>-->
-
-                                            <tr v-for="(item,i) in UsersInfo">
-                                                <td>{{item.userId}}</td>
-                                                <td>{{item.userName}}</td>
-                                                <td>{{item.userNickname}}</td>
-                                                <td>{{item.userSex}}</td>
-                                                <td>{{item.userMail}}</td>
-                                                <td>{{item.deptName}}</td>
-                                                <td>{{item.userStatus}}</td>
-                                                <td>{{item.userRegestertime}}</td>
-                                                <td>
-
-                                                    <div v-if="item.userStatus =='1'" class="badge badge-success">在职
-                                                    </div>
-                                                    <div v-if="item.userStatus =='0'" class="badge badge-danger">离职
-                                                    </div>
-                                                </td>
-                                                <td><a href="#" class="btn btn-action btn-secondary">操作</a></td>
-                                            </tr>
-                                        </table>
+                            <div class="card-body">
+                                <form method="POST">
+                                    <div class="row">
+                                        <div class="form-group col-6">
+                                            <label for="userName">用户名</label>
+                                            <input id="userName" type="text" class="form-control" name="userName"
+                                                   autofocus>
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <label for="userNickName">昵称</label>
+                                            <input id="userNickName" type="text" class="form-control"
+                                                   name="userNickName">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="card-footer text-right">
-                                    <nav class="d-inline-block">
-                                        <ul class="pagination mb-0">
-                                            <li class="page-item disabled">
-                                                <a class="page-link" href="#" tabindex="-1"><i
-                                                        class="ion ion-chevron-left"></i></a>
-                                            </li>
-                                            <li class="page-item active"><a class="page-link" href="#">1 <span
-                                                    class="sr-only">(current)</span></a></li>
-                                            <li class="page-item">
-                                                <a class="page-link" href="#">2</a>
-                                            </li>
-                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                            <li class="page-item">
-                                                <a class="page-link" href="#"><i class="ion ion-chevron-right"></i></a>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                </div>
+                                    <div class="row">
+                                        <div class="form-group col-6">
+                                            <label for="userMail">Email</label>
+                                            <input id="userMail" type="email" class="form-control" name="userMail">
+                                            <div class="invalid-feedback">
+                                            </div>
+
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <label>部门</label>
+                                            <select class="form-control">
+                                                <option>男</option>
+                                                <option>女</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-6">
+                                            <label for="password" class="d-block">密码</label>
+                                            <input id="password" type="password" class="form-control" name="password">
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <label for="password2" class="d-block">Password Confirmation</label>
+                                            <input id="password2" type="password" class="form-control"
+                                                   name="password-confirm">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-6">
+                                            <label for="userPhone" class="d-block">电话</label>
+                                            <input id="userPhone" type="password" class="form-control"
+                                                   name="userPhone">
+                                        </div>
+                                        <!--<div class="form-group col-6">-->
+                                        <!--<label>Country</label>-->
+                                        <!--<select class="form-control">-->
+                                        <!--<option>Indonesia</option>-->
+                                        <!--<option>Palestine</option>-->
+                                        <!--<option>Syria</option>-->
+                                        <!--<option>Malaysia</option>-->
+                                        <!--<option>Thailand</option>-->
+                                        <!--</select>-->
+                                        <!--</div>-->
+                                        <div class="form-group col-6">
+                                            <label>性别</label>
+                                            <select class="form-control">
+                                                <option>男</option>
+                                                <option>女</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-6">
+                                            <label>状态</label>
+                                            <select class="form-control">
+                                                <option>在职</option>
+                                                <option>离职</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <label>权限</label>
+                                            <select class="form-control">
+                                                <option>普通用户</option>
+                                                <option>管理员</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!--<div class="row">-->
+                                    <!--&lt;!&ndash;<div class="form-group col-6">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<label for="userRegesterTime" class="d-block">注册时间</label>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<input id="userRegesterTime" type="date" class="form-control"&ndash;&gt;-->
+                                    <!--&lt;!&ndash;name="userRegesterTime">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<div class="form-group col-6">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<label>权限</label>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<select class="form-control">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<option>普通用户</option>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<option>管理员</option>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;</select>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                    <!--</div>-->
+
+                                    <div class="form-group">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" name="agree" class="custom-control-input" id="agree">
+                                            <label class="custom-control-label" for="agree">I agree with the terms and
+                                                conditions</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary btn-block">
+                                            Register
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

@@ -16,10 +16,12 @@ public class LoginController {
     @Autowired
     UserService userService;
 
-    @ResponseBody
-    @GetMapping(value = "index2")
-    public String index() {
-        return "index";
+    @GetMapping(value = "userAddAction")
+    public String userAddAction(HttpServletRequest request, Map<String, Object> paraMap) {
+        User loginUser = (User) request.getSession(true).getAttribute("loginUser");
+        paraMap.put("loginUserName", loginUser.getUserNickname());
+        paraMap.put("loginUserInfo", loginUser);
+        return "UserAdd";
     }
 
     @PostMapping(value = {"loginAction"})
@@ -40,11 +42,11 @@ public class LoginController {
 
     @RequestMapping(value = "indexAction")
     public String index(HttpServletRequest request, Map<String, Object> paraMap) {
-        User loginUser = (User) request.getSession().getAttribute("loginUser");
+        User loginUser = (User) request.getSession(true).getAttribute("loginUser");
         paraMap.put("loginUserName", loginUser.getUserNickname());
         paraMap.put("loginUserInfo", loginUser);
         List<UserDeptView> allUserDeptView = userService.getAllUserDeptView();
-        paraMap.put("UsersInfo",allUserDeptView);
+        paraMap.put("UsersInfo", allUserDeptView);
         return "Users.html";
     }
 
