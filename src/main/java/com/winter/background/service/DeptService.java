@@ -13,20 +13,26 @@ public class DeptService {
     private DeptDao deptDao;
     @Autowired
     private Dept dept;
-    public Integer getDeptIdByDeptName(String deptName){
+
+    public Integer getDeptIdByDeptName(String deptName) {
         dept.setDeptName(deptName);
         List<Dept> deptByExample = deptDao.getDeptByExample(dept);
-        if(deptByExample.isEmpty()){
+        if (deptByExample.isEmpty()) {
             return null;
         }
         return deptByExample.get(0).getDeptId();
     }
-    public String getDeptNameByDeptId(Integer deptId){
+
+    public String getDeptNameByDeptId(Integer deptId) {
         dept.setDeptId(deptId);
         List<Dept> deptByExample = deptDao.getDeptByExample(dept);
-        if(deptByExample.isEmpty()){
+        if (deptByExample.isEmpty()) {
             return null;
         }
         return deptByExample.get(0).getDeptName();
+    }
+
+    public List<Dept> getAll() {
+        return deptDao.getDeptByExample(dept);
     }
 }

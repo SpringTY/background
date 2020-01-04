@@ -16,13 +16,7 @@ public class LoginController {
     @Autowired
     UserService userService;
 
-    @GetMapping(value = "userAddAction")
-    public String userAddAction(HttpServletRequest request, Map<String, Object> paraMap) {
-        User loginUser = (User) request.getSession(true).getAttribute("loginUser");
-        paraMap.put("loginUserName", loginUser.getUserNickname());
-        paraMap.put("loginUserInfo", loginUser);
-        return "UserAdd";
-    }
+
 
     @PostMapping(value = {"loginAction"})
     public String login(HttpServletRequest request, Map<String, Object> paraMap, @RequestParam("userName") String userName,

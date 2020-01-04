@@ -42,6 +42,10 @@ public class UserService {
         return userDao.getUserDeptViewByExample(userDeptView);
     }
 
+    public void insertUser(User u){
+//        u.setUserId();
+        userDao.insertUser(user);
+    }
     public List<User> getAll() {
         return userDao.getUserByExample(user);
     }

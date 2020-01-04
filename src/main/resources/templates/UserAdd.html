@@ -15,7 +15,7 @@
 </head>
 
 <body>
-<div id="app">
+<div id="userAddApp">
     <div class="main-wrapper">
         <div class="navbar-bg"></div>
         <nav class="navbar navbar-expand-lg main-navbar">
@@ -217,7 +217,7 @@
                     <div class="row">
                         <div class="col-12 col-md-12 col-lg-12">
                             <div class="card-body">
-                                <form method="POST">
+                                <form ID="userAdd" method="POST" action="/addUserAction">
                                     <div class="row">
                                         <div class="form-group col-6">
                                             <label for="userName">用户名</label>
@@ -240,9 +240,8 @@
                                         </div>
                                         <div class="form-group col-6">
                                             <label>部门</label>
-                                            <select class="form-control">
-                                                <option>男</option>
-                                                <option>女</option>
+                                            <select class="form-control" name="userDeptId" th:each="dept:${depts}">
+                                                <option th:value="${dept.deptId}" th:text="${dept.deptName}"></option>
                                             </select>
                                         </div>
                                     </div>
@@ -275,25 +274,25 @@
                                         <!--</div>-->
                                         <div class="form-group col-6">
                                             <label>性别</label>
-                                            <select class="form-control">
-                                                <option>男</option>
-                                                <option>女</option>
+                                            <select class="form-control" name="userSex">
+                                                <option value="男">男</option>
+                                                <option value="女">女</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-6">
                                             <label>状态</label>
-                                            <select class="form-control">
-                                                <option>在职</option>
-                                                <option>离职</option>
+                                            <select class="form-control" name="userStatus">
+                                                <option value="1">在职</option>
+                                                <option value="0">离职</option>
                                             </select>
                                         </div>
                                         <div class="form-group col-6">
                                             <label>权限</label>
-                                            <select class="form-control">
-                                                <option>普通用户</option>
-                                                <option>管理员</option>
+                                            <select class="form-control" name="userPower">
+                                                <option value="0">普通用户</option>
+                                                <option value="1">管理员</option>
                                             </select>
                                         </div>
                                     </div>
@@ -312,17 +311,16 @@
                                     <!--&lt;!&ndash;</div>&ndash;&gt;-->
                                     <!--</div>-->
 
-                                    <div class="form-group">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" name="agree" class="custom-control-input" id="agree">
-                                            <label class="custom-control-label" for="agree">I agree with the terms and
-                                                conditions</label>
-                                        </div>
-                                    </div>
+                                    <!--<div class="form-group">-->
+                                        <!--<div class="custom-control custom-checkbox">-->
+                                            <!--<input type="checkbox" name="agree" class="custom-control-input" id="agree">-->
+                                            <!--<label class="custom-control-label" for="agree">我确认本次操作无误</label>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
 
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-block">
-                                            Register
+                                            注册
                                         </button>
                                     </div>
                                 </form>
@@ -358,8 +356,10 @@
 <script src="../my_axios.min.js"></script>
 <script type="text/javascript" th:inline="javascript">
     var app = new Vue({
-            el: "#app",
-            methods: {},
+            el: "#userAddApp",
+            methods: {
+
+            },
             data: {
                 // userInfo: {
                 //     userId: '',

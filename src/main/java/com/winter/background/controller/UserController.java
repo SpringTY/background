@@ -1,16 +1,17 @@
 package com.winter.background.controller;
 
 import com.winter.background.dao.UserDao;
+import com.winter.background.domain.Dept;
 import com.winter.background.domain.User;
 import com.winter.background.domain.view.UserDeptView;
 import com.winter.background.service.DeptService;
 import com.winter.background.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
@@ -49,6 +50,23 @@ public class UserController {
         return test.getUserDeptViewByExample(userDeptView);
     }
 
+    /**
+     * 进入页面
+     *
+     * @param request
+     * @param paraMap
+     * @return
+     */
+    @GetMapping(value = "userAddAction")
+    public String userAddAction(HttpServletRequest request, Map<String, Object> paraMap) {
+        User loginUser = (User) request.getSession(true).getAttribute("loginUser");
+        paraMap.put("loginUserName", loginUser.getUserNickname());
+        paraMap.put("loginUserInfo", loginUser);
+        List<Dept> depts = deptService.getAll();
+        paraMap.put("depts", depts);
+        return "UserAdd";
+    }
+
     @RequestMapping(value = "UpdateUser")
     public String updateUser(@RequestParam("userName") String userName,
                              @RequestParam("userNickName") String userNickName,
@@ -84,5 +102,51 @@ public class UserController {
             return "";
         }
         return "Users.html";
+    }
+
+    /**
+     * 注册操作
+     *
+     * @param userName
+     * @param userNickName
+     * @param password
+     * @param userSex
+     * @param userPhone
+     * @param userMail
+     * @param userStatus
+     * @param userPower
+     * @return
+     */
+    @PostMapping(value = "addUserAction")
+    public String addUser(@RequestParam("userName") String userName,
+                          @RequestParam("userNickName") String userNickName,
+                          @RequestParam("password") String password,
+                          @RequestParam("userSex") String userSex,
+                          @RequestParam("userPhone") String userPhone,
+                          @RequestParam("userMail") String userMail,
+                          @RequestParam("userDeptId") String userDeptId,
+                          @RequestParam("userStatus") String userStatus,
+                          @RequestParam("userPower") String userPower
+    ) {
+        user.setUserName(userName);
+        user.setUserNickname(userNickName);
+        user.setPassword(password);
+        user.setUserSex(userSex);
+        user.setUserPhone(userService.getIntegerSafe(userPhone));
+        user.setUserMail(userMail);
+        user.setUserDeptId(Integer.parseInt(userDeptId));
+        user.setUserStatus(userStatus);
+        user.setUserPower(userPower);
+        user.setUserRegestertime(new Date(new java.util.Date().getTime()));
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println(
+                "add User"
+        );
+        userService.insertUser(user);
+        System.out.println(user);
+        return "redirect:/indexAction";
     }
 }
