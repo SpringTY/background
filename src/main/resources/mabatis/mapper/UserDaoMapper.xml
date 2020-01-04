@@ -62,19 +62,19 @@
                 AND userName = #{userName}
             </if>
             <if test="userNickname!=null">
-                AND  userNickname = #{userNickname}
+                AND userNickname = #{userNickname}
             </if>
             <if test="password!=null">
-                AND   password = #{password}
+                AND password = #{password}
             </if>
             <if test="userSex!=null">
-                AND  userSex = #{userSex}
+                AND userSex = #{userSex}
             </if>
             <if test="userPhone!=null">
                 AND userPhone = #{userPhone}
             </if>
             <if test="userMail!=null">
-                AND  userMail = #{userMail}
+                AND userMail = #{userMail}
             </if>
             <if test="userDeptId!=null">
                 AND userDeptId = #{userDeptId}
@@ -86,7 +86,58 @@
                 AND userRegestertime = #{userRegestertime}
             </if>
             <if test="userPower!=null">
-                AND  userPower = #{userPower}
+                AND userPower = #{userPower}
+            </if>
+        </where>
+    </select>
+    <select id="getUserDeptViewByExample" resultType="com.winter.background.domain.view.UserDeptView">
+        select * from user inner join dept
+        <where>
+            user.userdeptid = dept.deptid
+            <if test="userId!=null">
+                userid = #{userId}
+            </if>
+            <if test="userName!=null">
+                AND userName = #{userName}
+            </if>
+            <if test="userNickname!=null">
+                AND userNickname = #{userNickname}
+            </if>
+            <if test="password!=null">
+                AND password = #{password}
+            </if>
+            <if test="userSex!=null">
+                AND userSex = #{userSex}
+            </if>
+            <if test="userPhone!=null">
+                AND userPhone = #{userPhone}
+            </if>
+            <if test="userMail!=null">
+                AND userMail = #{userMail}
+            </if>
+            <if test="userDeptId!=null">
+                AND userDeptId = #{userDeptId}
+            </if>
+            <if test="userStatus!=null">
+                AND userStatus = #{userStatus}
+            </if>
+            <if test="userRegestertime!=null">
+                AND userRegestertime = #{userRegestertime}
+            </if>
+            <if test="userPower!=null">
+                AND userPower = #{userPower}
+            </if>
+            <if test="deptId!=null">
+                AND deptId = #{deptId}
+            </if>
+            <if test="deptRegionId!=null">
+                AND deptRegionId = #{deptRegionId}
+            </if>
+            <if test="deptName!=null">
+                AND deptName = #{deptName}
+            </if>
+            <if test="deptRegionName!=null">
+                AND deptRegionName = #{deptRegionName}
             </if>
         </where>
     </select>

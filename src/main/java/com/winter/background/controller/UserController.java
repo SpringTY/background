@@ -1,12 +1,15 @@
 package com.winter.background.controller;
 
+import com.winter.background.dao.UserDao;
 import com.winter.background.domain.User;
+import com.winter.background.domain.view.UserDeptView;
 import com.winter.background.service.DeptService;
 import com.winter.background.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -20,6 +23,10 @@ public class UserController {
     UserService userService;
     @Autowired
     DeptService deptService;
+    @Autowired
+    UserDeptView userDeptView;
+    @Autowired
+    UserDao test;
 
     /**
      * 以任何形式的方法访问UsersAction，同步访问，后段跳转到Users.html
@@ -36,10 +43,11 @@ public class UserController {
         return "Users.html";
     }
 
-//    @RequestMapping(value = "users")
-//    public String users() {
-//
-//    }
+    @ResponseBody
+    @RequestMapping(value = "text")
+    public List<UserDeptView> text() {
+        return test.getUserDeptViewByExample(userDeptView);
+    }
 
     @RequestMapping(value = "UpdateUser")
     public String updateUser(@RequestParam("userName") String userName,

@@ -1,12 +1,14 @@
 package com.winter.background.controller;
 
 import com.winter.background.domain.User;
+import com.winter.background.domain.view.UserDeptView;
 import com.winter.background.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -23,10 +25,6 @@ public class LoginController {
     @PostMapping(value = {"loginAction"})
     public String login(HttpServletRequest request, Map<String, Object> paraMap, @RequestParam("userName") String userName,
                         @RequestParam("password") String password) {
-        System.out.println("con input");
-        System.out.println(userName);
-        System.out.println(password);
-
         User login = userService.login(userName, password);
         System.out.println("in");
         System.out.println(userName);
@@ -45,6 +43,8 @@ public class LoginController {
         User loginUser = (User) request.getSession().getAttribute("loginUser");
         paraMap.put("loginUserName", loginUser.getUserNickname());
         paraMap.put("loginUserInfo", loginUser);
+        List<UserDeptView> allUserDeptView = userService.getAllUserDeptView();
+        paraMap.put("UsersInfo",allUserDeptView);
         return "Users.html";
     }
 
