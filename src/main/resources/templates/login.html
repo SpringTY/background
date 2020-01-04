@@ -29,26 +29,22 @@
                         <div class="card-header"><h4>Login</h4></div>
 
                         <div class="card-body">
-                            <form method="POST" action="#" class="needs-validation" novalidate="">
+                            <form method="POST" action="/loginAction" class="needs-validation" novalidate="">
                                 <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input id="email" type="email" class="form-control" name="email" tabindex="1"
-                                           required autofocus v-model="userName">
-                                    <div class="invalid-feedback">
-                                        Please fill in your email
-                                    </div>
+                                    <input id="userName" type="text" class="form-control" name="userName" tabindex="1"
+                                           required autofocus >
                                 </div>
 
                                 <div class="form-group">
                                     <label for="password" class="d-block">Password
-                                        <div class="float-right">
-                                            <a href="forgot.html">
-                                                Forgot Password?
-                                            </a>
-                                        </div>
+                                        <!--<div class="float-right">-->
+                                            <!--&lt;!&ndash;<a href="forgot.html">&ndash;&gt;-->
+                                                <!--&lt;!&ndash;Forgot Password?&ndash;&gt;-->
+                                            <!--&lt;!&ndash;</a>&ndash;&gt;-->
+                                        <!--</div>-->
                                     </label>
                                     <input id="password" type="password" class="form-control" name="password"
-                                           tabindex="2" required v-model="password">
+                                           tabindex="2" required >
                                     <div class="invalid-feedback">
                                         please fill in your password
                                     </div>
@@ -56,15 +52,14 @@
 
                                 <div class="form-group">
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" name="remember" class="custom-control-input" tabindex="3"
-                                               id="remember-me">
-                                        <label class="custom-control-label" for="remember-me">Remember Me</label>
+                                        <!--<input type="checkbox" name="remember" class="custom-control-input" tabindex="3"-->
+                                               <!--id="remember-me">-->
+                                        <!--<label class="custom-control-label" for="remember-me">Remember Me</label>-->
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary btn-block" tabindex="4"
-                                            v-on:click="login">
+                                    <button type="submit" class="btn btn-primary btn-block" tabindex="4">
                                         Login
                                     </button>
                                 </div>
@@ -82,54 +77,22 @@
         </div>
     </section>
 </div>
-<script src="../dist/modules/jquery.min.js"></script>
-<script src="../dist/modules/popper.js"></script>
-<script src="../dist/modules/tooltip.js"></script>
-<script src="../dist/modules/bootstrap/js/bootstrap.min.js"></script>
-<script src="../dist/modules/nicescroll/jquery.nicescroll.min.js"></script>
-<!--<script src="../dist/modules/moment.min.js"></script>-->
-<script src="../dist/modules/scroll-up-bar/dist/scroll-up-bar.min.js"></script>
-<script src="../dist/js/sa-functions.js"></script>
+<!--<script src="../dist/modules/jquery.min.js"></script>-->
+<!--<script src="../dist/modules/popper.js"></script>-->
+<!--<script src="../dist/modules/tooltip.js"></script>-->
+<!--<script src="../dist/modules/bootstrap/js/bootstrap.min.js"></script>-->
+<!--<script src="../dist/modules/nicescroll/jquery.nicescroll.min.js"></script>-->
+<!--&lt;!&ndash;<script src="../dist/modules/moment.min.js"></script>&ndash;&gt;-->
+<!--<script src="../dist/modules/scroll-up-bar/dist/scroll-up-bar.min.js"></script>-->
+<!--<script src="../dist/js/sa-functions.js"></script>-->
 
-<script src="../dist/js/scripts.js"></script>
-<script src="../dist/js/custom.js"></script>
-<script src="../dist/js/demo.js"></script>
-<script src="../vue.min.js"></script>
-<script src="../my_axios.min.js"></script>
+<!--<script src="../dist/js/scripts.js"></script>-->
+<!--<script src="../dist/js/custom.js"></script>-->
+<!--<script src="../dist/js/demo.js"></script>-->
+<!--<script src="../vue.min.js"></script>-->
+<!--<script src="../my_axios.min.js"></script>-->
 
 
-<script>
-    var app1 = new Vue(
-        {
-            el: '#app',
-            data: {
-                userName: '',
-                password: ''
 
-            },
-            methods: {
-                login: function () {
-                    alert("in")
-                    axios({
-                        method: 'POST',
-                        url: "/login",
-                        // params:
-
-                    }).then(function (res) {
-                        alert("in")
-                        if (res == "index2") {
-                            alert("ok")
-                        } else {
-                            alert("nk")
-                        }
-
-                    }).catch(function (reason) {
-                    })
-
-                }
-            }
-        }
-    )
-</script>
 </body>
 </html>

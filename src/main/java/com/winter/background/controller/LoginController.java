@@ -20,19 +20,38 @@ public class LoginController {
         return "index";
     }
 
-    @PostMapping(value = "/login")
+    @PostMapping(value = {"loginAction"})
     public String login(HttpServletRequest request, Map<String, Object> paraMap, @RequestParam("userName") String userName,
                         @RequestParam("password") String password) {
+        System.out.println("con input");
+        System.out.println(userName);
+        System.out.println(password);
+
         User login = userService.login(userName, password);
+        System.out.println("in");
+        System.out.println(userName);
+        System.out.println(password);
         if (login == null) {
-            return "Error";
+            paraMap.put("error_code", "error");
+            return "success.html";
         }
+        System.out.println("Login Success");
         request.getSession().setAttribute("loginUser", login);
-        return "redirect:/index.html";
+        return "redirect:indexAction";
+    }
+
+    @RequestMapping(value = "indexAction")
+    public String index(HttpServletRequest request, Map<String, Object> paraMap) {
+        User loginUser = (User) request.getSession().getAttribute("loginUser");
+        paraMap.put("loginUserName", loginUser.getUserNickname());
+        paraMap.put("loginUserInfo", loginUser);
+        return "Users.html";
     }
 
     @RequestMapping({"", "login"}) //这里为空或者是login都能进入该方法
     public String login() {
         return "login";
     }
+
+
 }

@@ -14,15 +14,28 @@ public class UserService {
     @Autowired
     private User user;
 
-    public User login(String userName,String password) {
+    public User login(String userName, String password) {
         user.setUserName(userName);
-        user.setUserName(password);
+        user.setPassword(password);
+        System.out.println("input user:\n"+user);
         List<User> loginResult = userDao.getUserByExample(user);
         if (loginResult.isEmpty()) {
             return null;
         }
-
+        System.out.println("登录用户信息:\n"+loginResult.get(0));
         return loginResult.get(0);
     }
 
+    public Integer getIntegerSafe(String integer) {
+        Integer res = null;
+        try {
+            res = Integer.parseInt(integer);
+        } catch (Exception e) {
+            return null;
+        }
+        return res;
+    }
+    public List<User> getAll(){
+        return userDao.getUserByExample(user);
+    }
 }

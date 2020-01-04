@@ -56,34 +56,37 @@
         select * from user
         <where>
             <if test="userId!=null">
-                userid = #{userId} AND
+                userid = #{userId}
+            </if>
+            <if test="userName!=null">
+                AND userName = #{userName}
             </if>
             <if test="userNickname!=null">
-                userNickname = #{userNickname} AND
+                AND  userNickname = #{userNickname}
             </if>
             <if test="password!=null">
-                password = #{password} AND
+                AND   password = #{password}
             </if>
             <if test="userSex!=null">
-                userSex = #{userSex} AND
+                AND  userSex = #{userSex}
             </if>
             <if test="userPhone!=null">
-                userPhone = #{userPhone} AND
+                AND userPhone = #{userPhone}
             </if>
             <if test="userMail!=null">
-                userMail = #{userMail} AND
+                AND  userMail = #{userMail}
             </if>
             <if test="userDeptId!=null">
-                userDeptId = #{userDeptId} AND
+                AND userDeptId = #{userDeptId}
             </if>
             <if test="userStatus!=null">
-                userStatus = #{userStatus} AND
+                AND userStatus = #{userStatus}
             </if>
             <if test="userRegestertime!=null">
-                userRegestertime = #{userRegestertime} AND
+                AND userRegestertime = #{userRegestertime}
             </if>
             <if test="userPower!=null">
-                userPower = #{userPower}
+                AND  userPower = #{userPower}
             </if>
         </where>
     </select>
