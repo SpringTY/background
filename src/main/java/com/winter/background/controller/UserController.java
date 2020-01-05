@@ -109,10 +109,18 @@ public class UserController {
     @PostMapping(value = "updateUserAction")
     public String update(User form
     ) {
-//        @RequestPgitm("userPower") String userPower
+        String userName = user.getUserName();
+        User example = new User();
+        example.setUserName(userName);
+        List<User> userByExample = userService.getUserByExample(example);
+        User user = userByExample.get(0);
+        form.setUserId(user.getUserId());
+        form.setUserRegestertime(user.getUserRegestertime());
+
         System.out.println("form");
         System.out.println(form);
-        return null;
+        userService.updateUser(form);
+        return "redirect:/indexAction";
     }
 
     /**

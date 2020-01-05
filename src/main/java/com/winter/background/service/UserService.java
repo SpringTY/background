@@ -87,6 +87,10 @@ public class UserService {
         return userDao.getUserByExample(example);
     }
 
+    public void updateUser(User user) {
+        userDao.updateUser(user);
+    }
+
     public List<User> getAll() {
 
         User user = new User();
