@@ -15,15 +15,10 @@ public class UserService {
     @Autowired
     private UserDao userDao;
     @Autowired
-    private User user;
-    @Autowired
-    private UserDeptView userDeptView;
-    @Autowired
     private DeptDao deptDao;
-    @Autowired
-    private Dept dept;
 
     public User login(String userName, String password) {
+        User user = new User();
         user.setUserName(userName);
         user.setPassword(password);
         List<User> loginResult = userDao.getUserByExample(user);
@@ -44,8 +39,14 @@ public class UserService {
         return res;
     }
 
+    public String toStringSafa(String s) {
+        return (s.equals("") || s == null) ? null : s;
+    }
+
     public UserDeptView toDeptView(User user) {
 //        userDeptView.set
+        UserDeptView userDeptView = new UserDeptView();
+        Dept dept = new Dept();
         userDeptView.setUserPower(user.getUserPower());
         userDeptView.setUserId(user.getUserId());
         userDeptView.setUserName(user.getUserNickname());
@@ -68,7 +69,8 @@ public class UserService {
     }
 
     public List<UserDeptView> getAllUserDeptView() {
-        return userDao.getUserDeptViewByExample(userDeptView);
+
+        return userDao.getUserDeptViewByExample(new UserDeptView());
     }
 
     public List<UserDeptView> getUserDeptViewByExample(UserDeptView example) {
@@ -77,6 +79,7 @@ public class UserService {
 
     public void insertUser(User u) {
 //        u.setUserId();
+        User user = new User();
         userDao.insertUser(user);
     }
 
@@ -85,6 +88,8 @@ public class UserService {
     }
 
     public List<User> getAll() {
+
+        User user = new User();
         return userDao.getUserByExample(user);
     }
 }

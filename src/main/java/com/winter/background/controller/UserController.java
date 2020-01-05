@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -171,38 +172,39 @@ public class UserController {
                                    @RequestParam("userMail") String userMail,
                                    @RequestParam("userDeptId") String userDeptId,
                                    @RequestParam("userStatus") String userStatus,
-                                   @RequestParam("userPower") String userPower,
-                                   @RequestParam("dateCondition") String dateCondition,
-                                   @RequestParam("userRegestertime") String userRegestertime
+                                   @RequestParam("userPower") String userPower
     ) {
         User loginUser = (User) request.getSession(true).getAttribute("loginUser");
         paraMap.put("loginUserName", loginUser.getUserNickname());
         paraMap.put("loginUserInfo", loginUser);
-        user.setUserName(userName);
-        user.setUserNickname(userNickName);
-        user.setUserSex(userSex);
+        user.setUserName(userService.toStringSafa(userName));
+        user.setUserNickname(userService.toStringSafa(userNickName));
+        user.setUserSex(userService.toStringSafa(userSex));
         user.setUserPhone(userService.getIntegerSafe(userPhone));
-        user.setUserMail(userMail);
-        user.setUserStatus(userStatus);
-        user.setUserPower(userPower);
+        user.setUserMail(userService.toStringSafa(userMail));
+        user.setUserStatus(userService.toStringSafa(userStatus));
+        user.setUserPower(userService.toStringSafa(userPower));
+        user.setPassword(null);
+        user.setUserRegestertime(null);
+        user.setUserDeptId(userService.getIntegerSafe(userDeptId));
+        user.setUserId(null);
+
         System.out.println("select");
         System.out.println("select");
         System.out.println("select");
         System.out.println("select");
         System.out.println("select");
         System.out.println(user);
-
-        if(dateCondition.equals("non")){
-//            userD
-//            userService.get
-
-        }else if(dateCondition.equals("before")){
-
-        }else if(dateCondition.equals("after")){
-            // after
-        }else{
-
+        List<User> userByExample = userService.getUserByExample(user);
+        System.out.println("after select user");
+        System.out.println(userByExample);
+        List<UserDeptView> result = new ArrayList<>();
+        if (!userByExample.isEmpty()) {
+            for (User item : userByExample) {
+                result.add(userService.toDeptView(item));
+            }
         }
-        return "redirect:/indexAction";
+        paraMap.put("UsersInfo", result);
+        return "Users.html";
     }
 }

@@ -1,6 +1,11 @@
 spring:
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
   datasource:
-    url: jdbc:mysql://47.100.172.22:3306/background?useUnicode=true&charactorEncoding=UTF-8&useSSL=false
+    url: jdbc:mysql://47.100.172.22:3306/background?useUnicode=true&characterEncoding=utf8
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: root123
@@ -11,3 +16,6 @@ mybatis:
     map-underscore-to-camel-case: true
   mapper-locations: classpath:mabatis/mapper/*.xml
   type-aliases-package: com.winter.background.domain
+server:
+  tomcat:
+    uri-encoding: UTF-8

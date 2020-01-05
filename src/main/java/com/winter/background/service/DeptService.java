@@ -11,10 +11,9 @@ import java.util.List;
 public class DeptService {
     @Autowired
     private DeptDao deptDao;
-    @Autowired
-    private Dept dept;
 
     public Integer getDeptIdByDeptName(String deptName) {
+        Dept dept = new Dept();
         dept.setDeptName(deptName);
         List<Dept> deptByExample = deptDao.getDeptByExample(dept);
         if (deptByExample.isEmpty()) {
@@ -24,6 +23,7 @@ public class DeptService {
     }
 
     public String getDeptNameByDeptId(Integer deptId) {
+        Dept dept = new Dept();
         dept.setDeptId(deptId);
         List<Dept> deptByExample = deptDao.getDeptByExample(dept);
         if (deptByExample.isEmpty()) {
@@ -33,6 +33,7 @@ public class DeptService {
     }
 
     public List<Dept> getAll() {
+        Dept dept = new Dept();
         return deptDao.getDeptByExample(dept);
     }
 }
