@@ -211,13 +211,13 @@
         <div class="main-content">
             <section class="section">
                 <h1 class="section-header">
-                    <div>添加用户</div>
+                    <div>查找用户(输入部分信息即可)</div>
                 </h1>
                 <div class="section-body">
                     <div class="row">
                         <div class="col-12 col-md-12 col-lg-12">
                             <div class="card-body">
-                                <form ID="userAdd" method="POST" action="/addUserAction">
+                                <form ID="userAdd" method="POST" action="/userSelectAction">
                                     <div class="row">
                                         <div class="form-group col-6">
                                             <label for="userName">用户名</label>
@@ -247,13 +247,17 @@
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-6">
-                                            <label for="password" class="d-block">密码</label>
-                                            <input id="password" type="password" class="form-control" name="password">
+                                            <label for="userRegestertime" class="d-block">注册时间</label>
+                                            <input id="userRegestertime" type="date" class="form-control"
+                                                   name="userRegestertime">
                                         </div>
                                         <div class="form-group col-6">
-                                            <label for="password2" class="d-block">Password Confirmation</label>
-                                            <input id="password2" type="password" class="form-control"
-                                                   name="password-confirm">
+                                            <label>日期相对</label>
+                                            <select class="form-control" name="dateCondition">
+                                                <option value="before">之前</option>
+                                                <option value="after">之后</option>
+                                                <option value="non" selected="selected">不指定日期</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -320,7 +324,7 @@
 
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-block">
-                                            注册
+                                            查找
                                         </button>
                                     </div>
                                 </form>

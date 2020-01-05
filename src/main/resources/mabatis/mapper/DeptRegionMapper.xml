@@ -19,7 +19,7 @@
         select * from deptregion
         <where>
             <if test="deptRegionId!=null">
-                deptregionid = #{deptRegionId} AND
+                AND deptregionid = #{deptRegionId}
             </if>
             <if test="deptRegionName!=null">
                 deptregionname = #{deptRegionName}

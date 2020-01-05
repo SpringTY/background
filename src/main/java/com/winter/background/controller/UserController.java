@@ -78,6 +78,7 @@ public class UserController {
                              @RequestParam("userStatus") String userStatus,
                              @RequestParam("userRegestertime") String userRegestertime,
                              @RequestParam("userPower") String userPower
+
     ) {
         user.setUserName(userName);
         user.setUserNickname(userNickName);
@@ -147,6 +148,61 @@ public class UserController {
         );
         userService.insertUser(user);
         System.out.println(user);
+        return "redirect:/indexAction";
+    }
+
+    @GetMapping(value = "/userSelect")
+    public String userSelectPage(HttpServletRequest request, Map<String, Object> paraMap) {
+        User loginUser = (User) request.getSession(true).getAttribute("loginUser");
+        paraMap.put("loginUserName", loginUser.getUserNickname());
+        paraMap.put("loginUserInfo", loginUser);
+        List<Dept> depts = deptService.getAll();
+        paraMap.put("depts", depts);
+        return "userSelectPage.html";
+    }
+
+    @PostMapping(value = "userSelectAction")
+    public String userSelectAction(HttpServletRequest request,
+                                   Map<String, Object> paraMap,
+                                   @RequestParam("userName") String userName,
+                                   @RequestParam("userNickName") String userNickName,
+                                   @RequestParam("userSex") String userSex,
+                                   @RequestParam("userPhone") String userPhone,
+                                   @RequestParam("userMail") String userMail,
+                                   @RequestParam("userDeptId") String userDeptId,
+                                   @RequestParam("userStatus") String userStatus,
+                                   @RequestParam("userPower") String userPower,
+                                   @RequestParam("dateCondition") String dateCondition,
+                                   @RequestParam("userRegestertime") String userRegestertime
+    ) {
+        User loginUser = (User) request.getSession(true).getAttribute("loginUser");
+        paraMap.put("loginUserName", loginUser.getUserNickname());
+        paraMap.put("loginUserInfo", loginUser);
+        user.setUserName(userName);
+        user.setUserNickname(userNickName);
+        user.setUserSex(userSex);
+        user.setUserPhone(userService.getIntegerSafe(userPhone));
+        user.setUserMail(userMail);
+        user.setUserStatus(userStatus);
+        user.setUserPower(userPower);
+        System.out.println("select");
+        System.out.println("select");
+        System.out.println("select");
+        System.out.println("select");
+        System.out.println("select");
+        System.out.println(user);
+
+        if(dateCondition.equals("non")){
+//            userD
+//            userService.get
+
+        }else if(dateCondition.equals("before")){
+
+        }else if(dateCondition.equals("after")){
+            // after
+        }else{
+
+        }
         return "redirect:/indexAction";
     }
 }

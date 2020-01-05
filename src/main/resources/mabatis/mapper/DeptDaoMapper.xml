@@ -21,16 +21,16 @@
         select * from dept
         <where>
             <if test="deptId!=null">
-                deptid = #{deptId} AND
+                AND  deptid = #{deptId}
             </if>
             <if test="deptRegionId!=null">
-                deptregionid = #{deptRegionId} AND
+                AND  deptregionid = #{deptRegionId}
             </if>
             <if test="deptName!=null">
-                deptname = #{deptName} AND
+                AND deptname = #{deptName}
             </if>
             <if test="deptRegionName!=null">
-                deptregionname = #{deptRegionName}
+                AND  deptregionname = #{deptRegionName}
             </if>
         </where>
     </select>
