@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<common th:fragment="navigator">
+    <div class="main-sidebar">
+        <aside id="sidebar-wrapper">
+            <div class="sidebar-brand">
+                <a href="index.html">后台管理</a>
+            </div>
+            <div class="sidebar-user">
+                <div class="sidebar-user-picture">
+                    <img alt="image" src="../dist/img/avatar/avatar-1.jpeg">
+                </div>
+                <div class="sidebar-user-details">
+                    <div class="user-name">[[${loginUserName}]]</div>
+                    <div class="user-role" th:if="${loginUserInfo.userPower eq '0'}">
+                        普通用户
+                    </div>
+                    <div class="user-role" th:if="${loginUserInfo.userPower eq '1'}">
+                        管理员
+                    </div>
+                    <div class="user-role" th:if="${loginUserInfo.userPower eq '2'}">
+                        超级管理员
+                    </div>
+                </div>
+            </div>
+            <ul class="sidebar-menu">
+                <!--<li class="menu-header">用户</li>-->
+                <li>
+                    <a href="/"><i class="ion ion-speedometer"></i><span>个人资料</span></a>
+                </li>
+
+                <!--<li class="menu-header">用户管理</li>-->
+                <li>
+                    <a href="#" class="has-dropdown"><i
+                            class="ion ion-ios-albums-outline"></i><span>用户管理</span></a>
+                    <ul class="menu-dropdown">
+                        <li><a href="/indexAction"><i class="ion ion-ios-circle-outline"></i> 用户列表</a></li>
+                        <li><a href="/userAddAction"><i class="ion ion-ios-circle-outline"></i> 添加用户</a>
+                        </li>
+                        <li><a href="/userSelect"><i class="ion ion-ios-circle-outline"></i> 查找用户</a></li>
+                        <li><a href="toastr.html"><i class="ion ion-ios-circle-outline"></i> 修改用户</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </aside>
+    </div>
+</common>
+</html>

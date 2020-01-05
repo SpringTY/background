@@ -17,7 +17,6 @@ public class LoginController {
     UserService userService;
 
 
-
     @PostMapping(value = {"loginAction"})
     public String login(HttpServletRequest request, Map<String, Object> paraMap, @RequestParam("userName") String userName,
                         @RequestParam("password") String password) {
@@ -32,6 +31,12 @@ public class LoginController {
         System.out.println("Login Success");
         request.getSession().setAttribute("loginUser", login);
         return "redirect:indexAction";
+    }
+
+    @RequestMapping(value = "loginOut")
+    public String loginOut(HttpServletRequest request) {
+        request.getSession().removeAttribute("loginUser");
+        return "login.html";
     }
 
     @RequestMapping(value = "indexAction")
