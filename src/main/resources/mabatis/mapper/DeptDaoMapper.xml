@@ -14,8 +14,23 @@
     </insert>
 
     <update id="updateDept">
-
+        update dept
+        <set>
+            <if test="deptName!=null">
+                deptName = #{deptName},
+            </if>
+        </set>
+        where deptid = #{deptId}
     </update>
+
+    <select id="getDeptIdByDeptName" resultType="java.lang.Integer">
+        select deptid from dept
+        <where>
+            <if test="deptName!=null">
+                deptname = #{deptName}
+            </if>
+        </where>
+    </select>
 
     <select id="getDeptByExample" resultType="com.winter.background.domain.Dept">
         select * from dept

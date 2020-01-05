@@ -6,13 +6,19 @@
 <mapper namespace="com.winter.background.dao.DeptRegionDao">
     <insert id="updateDeptRegion">
         insert into deptregion values (
-            #{deptregionid},
-            #{deptregionname}
+            #{deptRegionId},
+            #{deptRegionName}
         )
     </insert>
     
     <update id="insertDeptRegion">
-        
+        update deptregion
+        <set>
+            <if test="deptRegionName!=null">
+                deptregionname = #{deptRegionName}
+            </if>
+            where deptregionid = #{deptRegionId}
+        </set>
     </update>
     
     <select id="getDeptRegionByExample" resultType="com.winter.background.domain.DeptRegion">

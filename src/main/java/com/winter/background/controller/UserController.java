@@ -23,8 +23,8 @@ public class UserController {
     User user;
     @Autowired
     UserService userService;
-    @Autowired
-    DeptService deptService;
+//    @Autowired
+//    DeptService deptService;
     @Autowired
     UserDeptView userDeptView;
     @Autowired
@@ -60,12 +60,13 @@ public class UserController {
      */
     @GetMapping(value = "userAddAction")
     public String userAddAction(HttpServletRequest request, Map<String, Object> paraMap) {
+        DeptService deptService = new DeptService();
         User loginUser = (User) request.getSession(true).getAttribute("loginUser");
         paraMap.put("loginUserName", loginUser.getUserNickname());
         paraMap.put("loginUserInfo", loginUser);
-        List<Dept> depts = deptService.getAll();
+        List<Dept> depts = deptService.getAllDept();
         paraMap.put("depts", depts);
-        return "UserAdd";
+        return "UserAdd.html";
     }
 
     @RequestMapping(value = "UpdateUser")
@@ -81,6 +82,7 @@ public class UserController {
                              @RequestParam("userPower") String userPower
 
     ) {
+        DeptService deptService = new DeptService();
         user.setUserName(userName);
         user.setUserNickname(userNickName);
         user.setPassword(password);
@@ -169,19 +171,21 @@ public class UserController {
         return "redirect:/indexAction";
     }
 
-    @GetMapping(value = "/userSelect")
+    @GetMapping(value = "userSelect")
     public String userSelectPage(HttpServletRequest request, Map<String, Object> paraMap) {
+        DeptService deptService = new DeptService();
         User loginUser = (User) request.getSession(true).getAttribute("loginUser");
         paraMap.put("loginUserName", loginUser.getUserNickname());
         paraMap.put("loginUserInfo", loginUser);
-        List<Dept> depts = deptService.getAll();
+        List<Dept> depts = deptService.getAllDept();
         paraMap.put("depts", depts);
         return "userSelectPage.html";
     }
 
-    @GetMapping(value = "/updateUser")
+    @GetMapping(value = "updateUser")
     public String updateUser(String userId, Map<String, Object> paraMap, HttpServletRequest request) {
         User user = new User();
+        DeptService deptService = new DeptService();
         user.setUserId(Integer.parseInt(userId));
         List<User> userByExample = userService.getUserByExample(user);
         User user1 = userByExample.get(0);
@@ -189,7 +193,7 @@ public class UserController {
         User loginUser = (User) request.getSession(true).getAttribute("loginUser");
         paraMap.put("loginUserName", loginUser.getUserNickname());
         paraMap.put("loginUserInfo", loginUser);
-        List<Dept> depts = deptService.getAll();
+        List<Dept> depts = deptService.getAllDept();
         paraMap.put("depts", depts);
         return "UserAlter.html";
     }

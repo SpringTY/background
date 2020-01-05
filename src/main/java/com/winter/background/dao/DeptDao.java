@@ -10,4 +10,5 @@ public interface DeptDao {
     List<Dept> getDeptByExample(Dept example);
     void updateDept(Dept dept);
     void insertDept(Dept dept);
+    Integer getDeptIdByDeptName(String userDeptName);
 }

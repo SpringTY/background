@@ -3,37 +3,36 @@ package com.winter.background.service;
 import com.winter.background.dao.DeptDao;
 import com.winter.background.domain.Dept;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
 public class DeptService {
     @Autowired
     private DeptDao deptDao;
+    @Autowired
+    private Dept dept;
 
-    public Integer getDeptIdByDeptName(String deptName) {
-        Dept dept = new Dept();
-        dept.setDeptName(deptName);
-        List<Dept> deptByExample = deptDao.getDeptByExample(dept);
-        if (deptByExample.isEmpty()) {
-            return null;
-        }
-        return deptByExample.get(0).getDeptId();
+    public List<Dept> getAllDept() {
+        return deptDao.getDeptByExample(new Dept());
     }
 
-    public String getDeptNameByDeptId(Integer deptId) {
-        Dept dept = new Dept();
-        dept.setDeptId(deptId);
-        List<Dept> deptByExample = deptDao.getDeptByExample(dept);
-        if (deptByExample.isEmpty()) {
-            return null;
-        }
-        return deptByExample.get(0).getDeptName();
+    public List<Dept> getDeptByExample(Dept example) {
+        return deptDao.getDeptByExample(example);
     }
 
-    public List<Dept> getAll() {
-        Dept dept = new Dept();
-        return deptDao.getDeptByExample(dept);
+    public void updateDept(Dept dept) {
+        deptDao.updateDept(dept);
+    }
+
+    public void insertDept(Dept dept) {
+        deptDao.insertDept(dept);
+    }
+
+    public Integer getDeptIdByDeptName(String userDeptName) {
+        return deptDao.getDeptIdByDeptName(userDeptName);
+    }
+
+    public String toStringSafa(String s) {
+        return (s.equals("") || s == null) ? null : s;
     }
 }

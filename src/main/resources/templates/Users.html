@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:v-if="http://www.w3.org/1999/xhtml"
-      xmlns:v-on="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:v-if="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"
@@ -102,7 +101,113 @@
                 </li>
             </ul>
         </nav>
-        <div th:include="common :: navigator"></div>
+        <div class="main-sidebar">
+            <aside id="sidebar-wrapper">
+                <div class="sidebar-brand">
+                    <a href="index.html">后台管理</a>
+                </div>
+                <div class="sidebar-user">
+                    <div class="sidebar-user-picture">
+                        <img alt="image" src="../dist/img/avatar/avatar-1.jpeg">
+                    </div>
+                    <div class="sidebar-user-details">
+                        <div class="user-name">[[${loginUserName}]]</div>
+                        <div class="user-role">
+                            [[${loginUserInfo.userPower}]]
+                        </div>
+                    </div>
+                </div>
+                <ul class="sidebar-menu">
+                    <!--<li class="menu-header">用户</li>-->
+                    <li>
+                        <a href="index.html"><i class="ion ion-speedometer"></i><span>Dashboard</span></a>
+                    </li>
+
+                    <!--<li class="menu-header">用户管理</li>-->
+                    <li>
+                        <a href="#" class="has-dropdown"><i
+                                class="ion ion-ios-albums-outline"></i><span>用户管理</span></a>
+                        <ul class="menu-dropdown">
+                            <li><a href="/indexAction"><i class="ion ion-ios-circle-outline"></i> 用户列表</a></li>
+                            <li><a href="/userAddAction"><i class="ion ion-ios-circle-outline"></i> 添加用户</a>
+                            </li>
+                            <li><a href="buttons.html"><i class="ion ion-ios-circle-outline"></i> 查找用户</a></li>
+                            <li><a href="toastr.html"><i class="ion ion-ios-circle-outline"></i> 修改用户</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="has-dropdown"><i class="ion ion-flag"></i><span>Icons</span></a>
+                        <ul class="menu-dropdown">
+                            <li><a href="ion-icons.html"><i class="ion ion-ios-circle-outline"></i> Ion Icons</a></li>
+                            <li><a href="fontawesome.html"><i class="ion ion-ios-circle-outline"></i> Font Awesome</a>
+                            </li>
+                            <li><a href="flag.html"><i class="ion ion-ios-circle-outline"></i> Flag</a></li>
+                        </ul>
+                    </li>
+                    <li class="active">
+                        <a href="table.html"><i class="ion ion-clipboard"></i><span>Tables</span></a>
+                    </li>
+                    <li>
+                        <a href="chartjs.html"><i class="ion ion-stats-bars"></i><span>Chart.js</span></a>
+                    </li>
+                    <li>
+                        <a href="simple.html"><i class="ion ion-ios-location-outline"></i><span>Google Maps</span></a>
+                    </li>
+                    <li>
+                        <a href="#" class="has-dropdown"><i
+                                class="ion ion-ios-copy-outline"></i><span>Examples</span></a>
+                        <ul class="menu-dropdown">
+                            <li><a href="login.html"><i class="ion ion-ios-circle-outline"></i> Login</a></li>
+                            <li><a href="register.html"><i class="ion ion-ios-circle-outline"></i> Register</a></li>
+                            <li><a href="forgot.html"><i class="ion ion-ios-circle-outline"></i> Forgot Password</a>
+                            </li>
+                            <li><a href="reset.html"><i class="ion ion-ios-circle-outline"></i> Reset Password</a></li>
+                            <li><a href="404.html"><i class="ion ion-ios-circle-outline"></i> 404</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-header">More</li>
+                    <li>
+                        <a href="#" class="has-dropdown"><i class="ion ion-ios-nutrition"></i> Click Me</a>
+                        <ul class="menu-dropdown">
+                            <li><a href="#"><i class="ion ion-ios-circle-outline"></i> Menu 1</a></li>
+                            <li><a href="#" class="has-dropdown"><i class="ion ion-ios-circle-outline"></i> Menu 2</a>
+                                <ul class="menu-dropdown">
+                                    <li><a href="#"><i class="ion ion-ios-circle-outline"></i> Child Menu 1</a></li>
+                                    <li><a href="#"><i class="ion ion-ios-circle-outline"></i> Child Menu 2</a></li>
+                                    <li><a href="#" class="has-dropdown"><i class="ion ion-ios-circle-outline"></i>
+                                        Child Menu 3</a>
+                                        <ul class="menu-dropdown">
+                                            <li><a href="#"><i class="ion ion-ios-circle-outline"></i> Child Menu 1</a>
+                                            </li>
+                                            <li><a href="#"><i class="ion ion-ios-circle-outline"></i> Child Menu 2</a>
+                                            </li>
+                                            <li><a href="#"><i class="ion ion-ios-circle-outline"></i> Child Menu 3</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#"><i class="ion ion-ios-circle-outline"></i> Child Menu 4</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="ion ion-heart"></i> Badges
+                            <div class="badge badge-primary">10</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="credits.html"><i class="ion ion-ios-information-outline"></i> Credits</a>
+                    </li>
+                </ul>
+                <div class="p-3 mt-4 mb-4">
+                    <a href="#" class="btn btn-danger btn-shadow btn-round has-icon has-icon-nofloat btn-block">
+                        <i class="ion ion-help-buoy"></i>
+                        <div>Go PRO!</div>
+                    </a>
+                </div>
+            </aside>
+        </div>
         <div class="main-content">
             <section class="section">
                 <h1 class="section-header">
@@ -149,7 +254,7 @@
                                             <!--<td th:text="${item.userRegestertime}"></td>-->
                                             <!--</tr>-->
 
-                                            <tr v-for="(item,i) in UsersInfo">
+                                            <tr v-for="(item,i) in PageUsers">
                                                 <td>{{item.userId}}</td>
                                                 <td>{{item.userName}}</td>
                                                 <td>{{item.userNickname}}</td>
@@ -165,9 +270,7 @@
                                                     <div v-if="item.userStatus =='0'" class="badge badge-danger">离职
                                                     </div>
                                                 </td>
-                                                <!--href="/updateUser?userId=($item.userId)"-->
-                                                <td><a v-on:click="change(item.userId)"
-                                                       class=" btn btn-action btn-secondary">操作</a></td>
+                                                <td><a href="#" class="btn btn-action btn-secondary">操作</a></td>
                                             </tr>
                                         </table>
                                     </div>
@@ -175,19 +278,19 @@
                                 <div class="card-footer text-right">
                                     <nav class="d-inline-block">
                                         <ul class="pagination mb-0">
-                                            <li class="page-item disabled">
-                                                <a class="page-link" href="#" tabindex="-1"><i
-                                                        class="ion ion-chevron-left"></i></a>
-                                            </li>
-                                            <li class="page-item active"><a class="page-link" href="#">1 <span
-                                                    class="sr-only">(current)</span></a></li>
                                             <li class="page-item">
-                                                <a class="page-link" href="#">2</a>
+                                                <a class="page-link" @click="prePage()"><i class="ion ion-chevron-left"></i></a>
                                             </li>
-                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                            <!--<li class="page-item active"><a class="page-link" href="#">1 <span-->
+                                            <!--class="sr-only">(current)</span></a></li>-->
+                                            <!--<li class="page-item">-->
+                                            <!--<a class="page-link" href="#">2</a>-->
+                                            <!--</li>-->
+                                            <!--<li class="page-item"><a class="page-link" href="#">3</a></li>-->
                                             <li class="page-item">
-                                                <a class="page-link" href="#"><i class="ion ion-chevron-right"></i></a>
+                                                <a class="page-link" @click="nextPage()"><i class="ion ion-chevron-right"></i></a>
                                             </li>
+                                            <label><h5>当前{{ CurrentPage+1 }}/{{ PageNum }}</h5></label>
                                         </ul>
                                     </nav>
                                 </div>
@@ -224,33 +327,35 @@
 <script type="text/javascript" th:inline="javascript">
     var app = new Vue({
             el: "#app",
+            data: {
+                UsersInfo: [[${UsersInfo}]],
+                PageUsers: [],
+                TotalPage: [],
+                PageSize: 6,
+                PageNum: null,
+                CurrentPage: 0
+            },
+            mounted: function() {
+                // console.log(this.UsersInfo);
+                this.getPage()
+            },
             methods: {
-                change: function (id) {
-                    window.location = "/updateUser?userId=" + id;
+                getPage: function () {
+                    this.PageNum = Math.ceil(this.UsersInfo.length / this.PageSize) || 1;
+                    for(var i = 0;i < this.PageNum;i ++) {
+                        this.TotalPage[i] = this.UsersInfo.slice(this.PageSize * i, this.PageSize * (i + 1));
+                    }
+                    this.PageUsers = this.TotalPage[this.CurrentPage];
+                },
+                prePage: function () {
+                    if(this.CurrentPage == 0) return;
+                    this.PageUsers = this.TotalPage[-- this.CurrentPage];
+                },
+                nextPage: function () {
+                    if(this.CurrentPage == this.PageNum - 1) return;
+                    this.PageUsers = this.TotalPage[++ this.CurrentPage];
                 }
             },
-            data: {
-                // userInfo: {
-                //     userId: '',
-                //     userName: '',
-                //     userNickname: '',
-                //     password: '',
-                //     userSex: '',
-                //     userPhone: '',
-                //     userMail: '',
-                //     userDeptId: '',
-                //     userStatus: '',
-                //     userRegestertime: '',
-                //     userPower: '',
-                //     // from dept
-                //     deptId: '',
-                //     deptRegionId: '',
-                //     deptName: '',
-                //     deptRegionName: ''
-                // },
-                UsersInfo: [[${UsersInfo}]]
-            }
-
         }
     )
 </script>
