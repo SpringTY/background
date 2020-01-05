@@ -106,6 +106,15 @@ public class UserController {
         return "Users.html";
     }
 
+    @PostMapping(value = "updateUserAction")
+    public String update(User form
+    ) {
+//        @RequestPgitm("userPower") String userPower
+        System.out.println("form");
+        System.out.println(form);
+        return null;
+    }
+
     /**
      * 注册操作
      *
@@ -160,6 +169,21 @@ public class UserController {
         List<Dept> depts = deptService.getAll();
         paraMap.put("depts", depts);
         return "userSelectPage.html";
+    }
+
+    @GetMapping(value = "/updateUser")
+    public String updateUser(String userId, Map<String, Object> paraMap, HttpServletRequest request) {
+        User user = new User();
+        user.setUserId(Integer.parseInt(userId));
+        List<User> userByExample = userService.getUserByExample(user);
+        User user1 = userByExample.get(0);
+        paraMap.put("userInfoAlter", user1);
+        User loginUser = (User) request.getSession(true).getAttribute("loginUser");
+        paraMap.put("loginUserName", loginUser.getUserNickname());
+        paraMap.put("loginUserInfo", loginUser);
+        List<Dept> depts = deptService.getAll();
+        paraMap.put("depts", depts);
+        return "UserAlter.html";
     }
 
     @PostMapping(value = "userSelectAction")
