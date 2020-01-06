@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:v-on="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:v-if="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"
@@ -16,7 +15,7 @@
 </head>
 
 <body>
-<div id="app">
+<div id="deptAddApp">
     <div class="main-wrapper">
         <div class="navbar-bg"></div>
         <nav class="navbar navbar-expand-lg main-navbar">
@@ -106,91 +105,34 @@
         <div class="main-content">
             <section class="section">
                 <h1 class="section-header">
-                    <div>用户信息</div>
+                    <div>添加部门</div>
                 </h1>
                 <div class="section-body">
                     <div class="row">
                         <div class="col-12 col-md-12 col-lg-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4>用户列表</h4>
-                                </div>
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered">
-                                            <tr>
-                                                <th>id</th>
-                                                <th>用户名</th>
-                                                <th>昵称</th>
-                                                <th>性别</th>
-                                                <th>邮箱</th>
-                                                <th>部门</th>
-                                                <th>状态</th>
-                                                <th>注册时间</th>
-                                                <th>权限</th>
-                                                <th>操作</th>
-                                            </tr>
-                                            <!--<tr th:each="item:${UsersInfo}">-->
-                                            <!--<td th:text="${item.userId}"></td>-->
-                                            <!--<td th:text="${item.userName}"></td>-->
-                                            <!--<td th:text="${item.userNickname}"></td>-->
-                                            <!--<td th:text="${item.userSex}"></td>-->
-                                            <!--<td th:text="${item.userMail}"></td>-->
-                                            <!--<td th:text="${item.deptName}"></td>-->
-                                            <!--<td>-->
-                                            <!--&lt;!&ndash;<td th:text="${item.userStatus}"></td>&ndash;&gt;-->
-                                            <!--<div th:if="${item.userStatus eq '1'}"class="badge badge-success">-->
-                                            <!--允许登录-->
-                                            <!--</div>-->
-                                            <!--<div th:if="${item.userStatus eq '0'}"class="badge badge-danger">-->
-                                            <!--关闭账号-->
-                                            <!--</div>-->
-                                            <!--</td>-->
-                                            <!--<td th:text="${item.userRegestertime}"></td>-->
-                                            <!--</tr>-->
-
-                                            <tr v-for="(item,i) in PageUsers">
-                                                <td>{{item.userId}}</td>
-                                                <td>{{item.userName}}</td>
-                                                <td>{{item.userNickname}}</td>
-                                                <td>{{item.userSex}}</td>
-                                                <td>{{item.userMail}}</td>
-                                                <td>{{item.deptName}}</td>
-                                                <td>{{item.userStatus}}</td>
-                                                <td>{{item.userRegestertime}}</td>
-                                                <td>
-
-                                                    <div v-if="item.userStatus =='1'" class="badge badge-success">在职
-                                                    </div>
-                                                    <div v-if="item.userStatus =='0'" class="badge badge-danger">离职
-                                                    </div>
-                                                </td>
-                                                <!--href="/updateUser?userId=($item.userId)"-->
-                                                <td><a v-on:click="change(item.userId)"
-                                                       class=" btn btn-action btn-secondary">操作</a></td>
-                                            </tr>
-                                        </table>
+                            <div class="card-body">
+                                <form ID="deptAdd" method="POST" action="/deptAddAction">
+                                    <div class="row">
+                                        <input id="deptName" type="text" class="form-control" name="deptName">
                                     </div>
-                                </div>
-                                <div class="card-footer text-right">
-                                    <nav class="d-inline-block">
-                                        <ul class="pagination mb-0">
-                                            <li class="page-item">
-                                                <a class="page-link" @click="prePage()"><i class="ion ion-chevron-left"></i></a>
-                                            </li>
-                                            <!--<li class="page-item active"><a class="page-link" href="#">1 <span-->
-                                            <!--class="sr-only">(current)</span></a></li>-->
-                                            <!--<li class="page-item">-->
-                                            <!--<a class="page-link" href="#">2</a>-->
-                                            <!--</li>-->
-                                            <!--<li class="page-item"><a class="page-link" href="#">3</a></li>-->
-                                            <li class="page-item">
-                                                <a class="page-link" @click="nextPage()"><i class="ion ion-chevron-right"></i></a>
-                                            </li>
-                                            <label><h5>当前{{ CurrentPage+1 }}/{{ PageNum }}</h5></label>
-                                        </ul>
-                                    </nav>
-                                </div>
+                                    <div class="row">
+                                        <select class="form-control" name="deptRegionName">
+                                            <option value="华北地区">华北地区</option>
+                                            <option value="东北地区">东北地区</option>
+                                            <option value="西北地区">西北地区</option>
+                                            <option value="华东地区">华东地区</option>
+                                            <option value="华中地区">华中地区</option>
+                                            <option value="华南地区">华南地区</option>
+                                            <option value="西南地区">西南地区</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary btn-block">
+                                            增加
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -223,39 +165,12 @@
 <script src="../my_axios.min.js"></script>
 <script type="text/javascript" th:inline="javascript">
     var app = new Vue({
-            el: "#app",
+            el: "#deptAddApp",
+            methods: {},
             data: {
-                UsersInfo: [[${UsersInfo}]],
-                PageUsers: [],
-                TotalPage: [],
-                PageSize: 6,
-                PageNum: null,
-                CurrentPage: 0
-            },
-            mounted: function() {
-                // console.log(this.UsersInfo);
-                this.getPage()
-            },
-            methods: {
-                change: function (id) {
-                    window.location = "/updateUser?userId=" + id;
-                },
-                getPage: function () {
-                    this.PageNum = Math.ceil(this.UsersInfo.length / this.PageSize) || 1;
-                    for(var i = 0;i < this.PageNum;i ++) {
-                        this.TotalPage[i] = this.UsersInfo.slice(this.PageSize * i, this.PageSize * (i + 1));
-                    }
-                    this.PageUsers = this.TotalPage[this.CurrentPage];
-                },
-                prePage: function () {
-                    if(this.CurrentPage == 0) return;
-                    this.PageUsers = this.TotalPage[-- this.CurrentPage];
-                },
-                nextPage: function () {
-                    if(this.CurrentPage == this.PageNum - 1) return;
-                    this.PageUsers = this.TotalPage[++ this.CurrentPage];
-                }
-            },
+                UsersInfo: [[${UsersInfo}]]
+            }
+
         }
     )
 </script>

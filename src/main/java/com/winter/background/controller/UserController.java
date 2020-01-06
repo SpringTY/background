@@ -107,8 +107,7 @@ public class UserController {
     }
 
     @PostMapping(value = "updateUserAction")
-    public String update(User form
-    ) {
+    public String update(User form) {
         String userName = user.getUserName();
         User example = new User();
         example.setUserName(userName);
@@ -163,9 +162,9 @@ public class UserController {
         System.out.println();
         System.out.println(
                 "add User"
-        );
+        );System.out.println(user);
         userService.insertUser(user);
-        System.out.println(user);
+
         return "redirect:/indexAction";
     }
 
@@ -179,9 +178,10 @@ public class UserController {
         return "userSelectPage.html";
     }
 
-    @GetMapping(value = "/updateUser")
+    @GetMapping(value = "updateUser")
     public String updateUser(String userId, Map<String, Object> paraMap, HttpServletRequest request) {
         User user = new User();
+//        System.out.println(userId);
         user.setUserId(Integer.parseInt(userId));
         List<User> userByExample = userService.getUserByExample(user);
         User user1 = userByExample.get(0);

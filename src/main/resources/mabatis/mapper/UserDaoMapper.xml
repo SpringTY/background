@@ -39,6 +39,9 @@
             <if test="userDeptId!=null">
                 userDeptId = #{userDeptId} ,
             </if>
+            <if test="userDeptName!=null">
+                userdeptname = #{userDeptName},
+            </if>
             <if test="userStatus!=null">
                 userStatus = #{userStatus} ,
             </if>
@@ -76,8 +79,8 @@
             <if test="userMail!=null">
                 AND userMail = #{userMail}
             </if>
-            <if test="userDeptId!=null">
-                AND userDeptId = #{userDeptId}
+            <if test="userDeptName!=null">
+                AND userdeptname = #{userDeptName}
             </if>
             <if test="userStatus!=null">
                 AND userStatus = #{userStatus}

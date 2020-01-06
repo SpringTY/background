@@ -135,11 +135,9 @@
                                         </div>
                                         <div class="form-group col-6">
                                             <label>部门</label>
-                                            <select class="form-control" name="userDeptId" th:each="dept:${depts}">
-
-                                                <option th:value="${dept.deptId}" th:text="${dept.deptName}"
-                                                        th:selected="${dept.deptId} == ${userInfoAlter.userDeptId} ? true :false"
-                                                ></option>
+                                            <select class="form-control" name="userDeptId" >
+                                                <option th:each="dept:${depts}" th:value="${dept.deptId}" th:text="${dept.deptName}"
+                                                        th:selected="${dept.deptId} == ${userInfoAlter.userDeptId} ? true :false"></option>
                                             </select>
                                         </div>
                                     </div>

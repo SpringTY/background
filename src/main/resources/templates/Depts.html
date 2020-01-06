@@ -113,60 +113,23 @@
                         <div class="col-12 col-md-12 col-lg-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4>用户列表</h4>
+                                    <h4>部门列表</h4>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table class="table table-bordered">
                                             <tr>
-                                                <th>id</th>
-                                                <th>用户名</th>
-                                                <th>昵称</th>
-                                                <th>性别</th>
-                                                <th>邮箱</th>
-                                                <th>部门</th>
-                                                <th>状态</th>
-                                                <th>注册时间</th>
-                                                <th>权限</th>
+                                                <th>部门id</th>
+                                                <th>部门名称</th>
+                                                <th>部门所在地区</th>
                                                 <th>操作</th>
                                             </tr>
-                                            <!--<tr th:each="item:${UsersInfo}">-->
-                                            <!--<td th:text="${item.userId}"></td>-->
-                                            <!--<td th:text="${item.userName}"></td>-->
-                                            <!--<td th:text="${item.userNickname}"></td>-->
-                                            <!--<td th:text="${item.userSex}"></td>-->
-                                            <!--<td th:text="${item.userMail}"></td>-->
-                                            <!--<td th:text="${item.deptName}"></td>-->
-                                            <!--<td>-->
-                                            <!--&lt;!&ndash;<td th:text="${item.userStatus}"></td>&ndash;&gt;-->
-                                            <!--<div th:if="${item.userStatus eq '1'}"class="badge badge-success">-->
-                                            <!--允许登录-->
-                                            <!--</div>-->
-                                            <!--<div th:if="${item.userStatus eq '0'}"class="badge badge-danger">-->
-                                            <!--关闭账号-->
-                                            <!--</div>-->
-                                            <!--</td>-->
-                                            <!--<td th:text="${item.userRegestertime}"></td>-->
-                                            <!--</tr>-->
 
                                             <tr v-for="(item,i) in PageUsers">
-                                                <td>{{item.userId}}</td>
-                                                <td>{{item.userName}}</td>
-                                                <td>{{item.userNickname}}</td>
-                                                <td>{{item.userSex}}</td>
-                                                <td>{{item.userMail}}</td>
+                                                <td>{{item.deptId}}</td>
                                                 <td>{{item.deptName}}</td>
-                                                <td>{{item.userStatus}}</td>
-                                                <td>{{item.userRegestertime}}</td>
-                                                <td>
-
-                                                    <div v-if="item.userStatus =='1'" class="badge badge-success">在职
-                                                    </div>
-                                                    <div v-if="item.userStatus =='0'" class="badge badge-danger">离职
-                                                    </div>
-                                                </td>
-                                                <!--href="/updateUser?userId=($item.userId)"-->
-                                                <td><a v-on:click="change(item.userId)"
+                                                <td>{{item.deptRegionName}}</td>
+                                                <td><a v-on:click="change(item.deptId)"
                                                        class=" btn btn-action btn-secondary">操作</a></td>
                                             </tr>
                                         </table>
@@ -225,7 +188,7 @@
     var app = new Vue({
             el: "#app",
             data: {
-                UsersInfo: [[${UsersInfo}]],
+                UsersInfo: [[${deptInfo}]],
                 PageUsers: [],
                 TotalPage: [],
                 PageSize: 6,
@@ -238,7 +201,8 @@
             },
             methods: {
                 change: function (id) {
-                    window.location = "/updateUser?userId=" + id;
+                    // alert(id);
+                    window.location = "/upadteDept?deptId=" + id;
                 },
                 getPage: function () {
                     this.PageNum = Math.ceil(this.UsersInfo.length / this.PageSize) || 1;

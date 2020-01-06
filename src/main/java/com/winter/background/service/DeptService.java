@@ -33,7 +33,22 @@ public class DeptService {
     }
 
     public List<Dept> getAll() {
-        Dept dept = new Dept();
+        return deptDao.getDeptByExample(new Dept());
+    }
+
+    public void insertDept(Dept dept) {
+        deptDao.insertDept(dept);
+    }
+
+    public List<Dept> getDeptByExample(Dept dept) {
         return deptDao.getDeptByExample(dept);
+    }
+
+    public String toStringSafa(String s) {
+        return (s.equals("") || s == null) ? null : s;
+    }
+
+    public void updateDept(Dept dept) {
+        deptDao.updateDept(dept);
     }
 }

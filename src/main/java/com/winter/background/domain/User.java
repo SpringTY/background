@@ -16,9 +16,12 @@ public class User {
     Integer userPhone;
     String userMail;
     Integer userDeptId;
+    Integer userDeptName;
     String userStatus;
     Date userRegestertime;
     String UserPower;
+
+
     //private List<User> authorities;
 
 //    @Override

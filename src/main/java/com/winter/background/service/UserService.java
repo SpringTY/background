@@ -63,7 +63,6 @@ public class UserService {
         Dept deptResult = deptByExample.get(0);
         userDeptView.setDeptId(deptResult.getDeptId());
         userDeptView.setDeptName(deptResult.getDeptName());
-        userDeptView.setDeptRegionId(dept.getDeptRegionId());
         userDeptView.setDeptRegionName(dept.getDeptRegionName());
         return userDeptView;
     }
@@ -77,9 +76,9 @@ public class UserService {
         return userDao.getUserDeptViewByExample(example);
     }
 
-    public void insertUser(User u) {
+    public void insertUser(User user) {
 //        u.setUserId();
-        User user = new User();
+
         userDao.insertUser(user);
     }
 

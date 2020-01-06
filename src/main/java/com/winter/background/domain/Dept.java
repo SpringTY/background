@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class Dept {
     Integer deptId;
-    Integer deptRegionId;
     String deptName;
     String deptRegionName;
 }

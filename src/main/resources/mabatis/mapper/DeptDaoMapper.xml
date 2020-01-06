@@ -6,25 +6,30 @@
 <mapper namespace="com.winter.background.dao.DeptDao">
     <insert id="insertDept">
         insert into dept values (
-        #{deptid},
-        #{deptregionid},
-        #{deptname},
-        #{deptregionname}
+        #{deptId},
+        #{deptName},
+        #{deptRegionName}
         )
     </insert>
 
     <update id="updateDept">
-
+        update dept
+        <set>
+            <if test="deptName!=null">
+                deptname = #{deptName},
+            </if>
+            <if test="deptRegionName!=null">
+                deptregionname = #{deptRegionName},
+            </if>
+        </set>
+        where deptid = #{deptId}
     </update>
 
-    <select id="getDeptByExample" resultType="com.winter.background.domain.Dept">
+    <select id="getDeptByExample"  resultType="com.winter.background.domain.Dept">
         select * from dept
         <where>
             <if test="deptId!=null">
                 AND  deptid = #{deptId}
-            </if>
-            <if test="deptRegionId!=null">
-                AND  deptregionid = #{deptRegionId}
             </if>
             <if test="deptName!=null">
                 AND deptname = #{deptName}
