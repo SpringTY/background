@@ -149,7 +149,7 @@
                                             <!--<td th:text="${item.userRegestertime}"></td>-->
                                             <!--</tr>-->
 
-                                            <tr v-for="(item,i) in UsersInfo">
+                                            <tr v-for="(item,i) in PageUsers">
                                                 <td>{{item.userId}}</td>
                                                 <td>{{item.userName}}</td>
                                                 <td>{{item.userNickname}}</td>
@@ -175,19 +175,19 @@
                                 <div class="card-footer text-right">
                                     <nav class="d-inline-block">
                                         <ul class="pagination mb-0">
-                                            <li class="page-item disabled">
-                                                <a class="page-link" href="#" tabindex="-1"><i
-                                                        class="ion ion-chevron-left"></i></a>
-                                            </li>
-                                            <li class="page-item active"><a class="page-link" href="#">1 <span
-                                                    class="sr-only">(current)</span></a></li>
                                             <li class="page-item">
-                                                <a class="page-link" href="#">2</a>
+                                                <a class="page-link" @click="prePage()"><i class="ion ion-chevron-left"></i></a>
                                             </li>
-                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                            <!--<li class="page-item active"><a class="page-link" href="#">1 <span-->
+                                            <!--class="sr-only">(current)</span></a></li>-->
+                                            <!--<li class="page-item">-->
+                                            <!--<a class="page-link" href="#">2</a>-->
+                                            <!--</li>-->
+                                            <!--<li class="page-item"><a class="page-link" href="#">3</a></li>-->
                                             <li class="page-item">
-                                                <a class="page-link" href="#"><i class="ion ion-chevron-right"></i></a>
+                                                <a class="page-link" @click="nextPage()"><i class="ion ion-chevron-right"></i></a>
                                             </li>
+                                            <label><h5>当前{{ CurrentPage+1 }}/{{ PageNum }}</h5></label>
                                         </ul>
                                     </nav>
                                 </div>
@@ -224,33 +224,35 @@
 <script type="text/javascript" th:inline="javascript">
     var app = new Vue({
             el: "#app",
+            data: {
+                UsersInfo: [[${UsersInfo}]],
+                PageUsers: [],
+                TotalPage: [],
+                PageSize: 6,
+                PageNum: null,
+                CurrentPage: 0
+            },
+            mounted: function() {
+                // console.log(this.UsersInfo);
+                this.getPage()
+            },
             methods: {
-                change: function (id) {
-                    window.location = "/updateUser?userId=" + id;
+                getPage: function () {
+                    this.PageNum = Math.ceil(this.UsersInfo.length / this.PageSize) || 1;
+                    for(var i = 0;i < this.PageNum;i ++) {
+                        this.TotalPage[i] = this.UsersInfo.slice(this.PageSize * i, this.PageSize * (i + 1));
+                    }
+                    this.PageUsers = this.TotalPage[this.CurrentPage];
+                },
+                prePage: function () {
+                    if(this.CurrentPage == 0) return;
+                    this.PageUsers = this.TotalPage[-- this.CurrentPage];
+                },
+                nextPage: function () {
+                    if(this.CurrentPage == this.PageNum - 1) return;
+                    this.PageUsers = this.TotalPage[++ this.CurrentPage];
                 }
             },
-            data: {
-                // userInfo: {
-                //     userId: '',
-                //     userName: '',
-                //     userNickname: '',
-                //     password: '',
-                //     userSex: '',
-                //     userPhone: '',
-                //     userMail: '',
-                //     userDeptId: '',
-                //     userStatus: '',
-                //     userRegestertime: '',
-                //     userPower: '',
-                //     // from dept
-                //     deptId: '',
-                //     deptRegionId: '',
-                //     deptName: '',
-                //     deptRegionName: ''
-                // },
-                UsersInfo: [[${UsersInfo}]]
-            }
-
         }
     )
 </script>
