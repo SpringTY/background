@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"
           name="viewport">
-    <title>查询用户</title>
+    <title>更新用户</title>
 
     <link rel="stylesheet" href="../dist/modules/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../dist/modules/ionicons/css/ionicons.min.css">
@@ -39,61 +39,58 @@
         <div class="main-content">
             <section class="section">
                 <h1 class="section-header">
-                    <div>查找用户(输入部分信息即可)</div>
+                    <div>我的信息</div>
                 </h1>
                 <div class="section-body">
                     <div class="row">
                         <div class="col-12 col-md-12 col-lg-12">
                             <div class="card-body">
-                                <form ID="userAdd" method="POST" action="/userSelectAction">
+                                <form ID="userAdd" method="POST" action="/updateUserAction">
                                     <div class="row">
                                         <div class="form-group col-6">
                                             <label for="userName">用户名</label>
                                             <input id="userName" type="text" class="form-control" name="userName"
-                                                   autofocus>
+                                                   th:value="${userInfoAlter.userName}" readonly="readonly" autofocus>
                                         </div>
                                         <div class="form-group col-6">
                                             <label for="userNickName">昵称</label>
                                             <input id="userNickName" type="text" class="form-control"
-                                                   name="userNickName">
+                                                   th:value="${userInfoAlter.userNickname}" name="userNickname">
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-6">
                                             <label for="userMail">Email</label>
-                                            <input id="userMail" type="email" class="form-control" name="userMail">
+                                            <input id="userMail" type="email" th:value="${userInfoAlter.userMail}"
+                                                   class="form-control" name="userMail">
                                             <div class="invalid-feedback">
                                             </div>
 
                                         </div>
                                         <div class="form-group col-6">
                                             <label>部门</label>
-                                            <select class="form-control" name="userDeptId">
-                                                <option th:each="dept:${depts}" th:value="${dept.deptId}"
-                                                        th:text="${dept.deptName}"></option>
+                                            <select class="form-control" name="userDeptId" >
+                                                <option th:each="dept:${depts}" th:value="${dept.deptId}" th:text="${dept.deptName}+'-'+${dept.deptRegionName}"
+                                                        th:selected="${dept.deptId} == ${userInfoAlter.userDeptId} ? true :false"></option>
                                             </select>
                                         </div>
                                     </div>
-                                    <!--<div class="row">-->
-                                    <!--<div class="form-group col-6">-->
-                                    <!--<label for="userRegestertime" class="d-block">注册时间</label>-->
-                                    <!--<input id="userRegestertime" type="date" class="form-control"-->
-                                    <!--name="userRegestertime">-->
-                                    <!--</div>-->
-                                    <!--<div class="form-group col-6">-->
-                                    <!--<label>日期相对</label>-->
-                                    <!--<select class="form-control" name="dateCondition">-->
-                                    <!--<option value="before">之前</option>-->
-                                    <!--<option value="after">之后</option>-->
-                                    <!--<option value="non" selected="selected">不指定日期</option>-->
-                                    <!--</select>-->
-                                    <!--</div>-->
-                                    <!--</div>-->
+                                    <div class="row">
+                                        <div class="form-group col-6">
+                                            <label for="password" class="d-block">密码</label>
+                                            <input id="password" type="password" class="form-control" name="password">
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <label for="password2" class="d-block">Password Confirmation</label>
+                                            <input id="password2" type="password" class="form-control"
+                                                   name="password-confirm">
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="form-group col-6">
                                             <label for="userPhone" class="d-block">电话</label>
                                             <input id="userPhone" type="text" class="form-control"
-                                                   name="userPhone">
+                                                   th:value="${userInfoAlter.userPhone}" name="userPhone">
                                         </div>
                                         <!--<div class="form-group col-6">-->
                                         <!--<label>Country</label>-->
@@ -108,8 +105,12 @@
                                         <div class="form-group col-6">
                                             <label>性别</label>
                                             <select class="form-control" name="userSex">
-                                                <option value="男">男</option>
-                                                <option value="女">女</option>
+                                                <option th:selected="${userInfoAlter.userSex eq '男'? true:false}"
+                                                        value="男">男
+                                                </option>
+                                                <option th:selected="${userInfoAlter.userSex eq '女'? true:false}"
+                                                        value="女">女
+                                                </option>
                                             </select>
                                         </div>
                                     </div>
@@ -117,15 +118,15 @@
                                         <div class="form-group col-6">
                                             <label>状态</label>
                                             <select class="form-control" name="userStatus">
-                                                <option value="1">在职</option>
-                                                <option value="0">离职</option>
+                                                <option th:selected="${userInfoAlter.userStatus eq '1'? true:false}"value="1">在职</option>
+                                                <option th:selected="${userInfoAlter.userStatus eq '0'? true:false}"value="0">离职</option>
                                             </select>
                                         </div>
                                         <div class="form-group col-6">
                                             <label>权限</label>
                                             <select class="form-control" name="userPower">
-                                                <option value="0">普通用户</option>
-                                                <option value="1">管理员</option>
+                                                <option  th:selected="${userInfoAlter.userStatus eq '0'? true:false}"value="0">普通用户</option>
+                                                <option th:selected="${userInfoAlter.userStatus eq '1'? true:false} "value="1">管理员</option>
                                             </select>
                                         </div>
                                     </div>
@@ -153,7 +154,7 @@
 
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-block">
-                                            查找
+                                            更新
                                         </button>
                                     </div>
                                 </form>

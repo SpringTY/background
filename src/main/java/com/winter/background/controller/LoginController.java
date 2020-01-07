@@ -30,6 +30,9 @@ public class LoginController {
         }
         System.out.println("Login Success");
         request.getSession().setAttribute("loginUser", login);
+        if(login.getUserPower().equals("0")){
+            return "redirect:/updateMyself";
+        }
         return "redirect:indexAction";
     }
 

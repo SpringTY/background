@@ -81,7 +81,7 @@ public class UserController {
         paraMap.put("loginUserInfo", loginUser);
         List<Dept> depts = deptService.getAll();
         paraMap.put("depts", depts);
-        return "UserAlter.html";
+        return "UserAlterMy.html";
     }
 
     @RequestMapping(value = "UpdateUser")
@@ -122,8 +122,21 @@ public class UserController {
         return "Users.html";
     }
 
+    @RequestMapping(value = "updateAnyOne")
+    public String updateAnyOne(HttpServletRequest request, Map<String, Object> paraMap) {
+
+        User loginUser = (User) request.getSession(true).getAttribute("loginUser");
+        paraMap.put("loginUserName", loginUser.getUserNickname());
+        paraMap.put("loginUserInfo", loginUser);
+        List<Dept> depts = deptService.getAll();
+        paraMap.put("depts", depts);
+
+        return "UserAlterAnyOne.html";
+    }
+
     @PostMapping(value = "updateUserAction")
     public String update(User form) {
+
         String userName = user.getUserName();
         User example = new User();
         example.setUserName(userName);
