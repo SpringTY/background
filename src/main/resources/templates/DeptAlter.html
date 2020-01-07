@@ -32,73 +32,7 @@
                 </div>
             </form>
             <ul class="navbar-nav navbar-right">
-                <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
-                                                             class="nav-link notification-toggle nav-link-lg beep"><i
-                        class="ion ion-ios-bell-outline"></i></a>
-                    <div class="dropdown-menu dropdown-list dropdown-menu-right">
-                        <div class="dropdown-header">Notifications
-                            <div class="float-right">
-                                <a href="#">View All</a>
-                            </div>
-                        </div>
-                        <div class="dropdown-list-content">
-                            <a href="#" class="dropdown-item dropdown-item-unread">
-                                <img alt="image" src="../dist/img/avatar/avatar-1.jpeg"
-                                     class="rounded-circle dropdown-item-img">
-                                <div class="dropdown-item-desc">
-                                    <b>Kusnaedi</b> has moved task <b>Fix bug header</b> to <b>Done</b>
-                                    <div class="time">10 Hours Ago</div>
-                                </div>
-                            </a>
-                            <a href="#" class="dropdown-item dropdown-item-unread">
-                                <img alt="image" src="../dist/img/avatar/avatar-2.jpeg"
-                                     class="rounded-circle dropdown-item-img">
-                                <div class="dropdown-item-desc">
-                                    <b>Ujang Maman</b> has moved task <b>Fix bug footer</b> to <b>Progress</b>
-                                    <div class="time">12 Hours Ago</div>
-                                </div>
-                            </a>
-                            <a href="#" class="dropdown-item">
-                                <img alt="image" src="../dist/img/avatar/avatar-3.jpeg"
-                                     class="rounded-circle dropdown-item-img">
-                                <div class="dropdown-item-desc">
-                                    <b>Agung Ardiansyah</b> has moved task <b>Fix bug sidebar</b> to <b>Done</b>
-                                    <div class="time">12 Hours Ago</div>
-                                </div>
-                            </a>
-                            <a href="#" class="dropdown-item">
-                                <img alt="image" src="../dist/img/avatar/avatar-4.jpeg"
-                                     class="rounded-circle dropdown-item-img">
-                                <div class="dropdown-item-desc">
-                                    <b>Ardian Rahardiansyah</b> has moved task <b>Fix bug navbar</b> to <b>Done</b>
-                                    <div class="time">16 Hours Ago</div>
-                                </div>
-                            </a>
-                            <a href="#" class="dropdown-item">
-                                <img alt="image" src="../dist/img/avatar/avatar-5.jpeg"
-                                     class="rounded-circle dropdown-item-img">
-                                <div class="dropdown-item-desc">
-                                    <b>Alfa Zulkarnain</b> has moved task <b>Add logo</b> to <b>Done</b>
-                                    <div class="time">Yesterday</div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg">
-                    <i class="ion ion-android-person d-lg-none"></i>
-                    <div class="d-sm-none d-lg-inline-block">Hi,[[${loginUserName}]]</div>
-                </a>
-                    <div class="dropdown-menu dropdown-menu-right">
-
-                        <a href="/" class="dropdown-item has-icon">
-                            <i class="ion ion-android-person"></i> 个人资料
-                        </a>
-                        <a href="#" class="dropdown-item has-icon">
-                            <i class="ion ion-log-out"></i> 退出
-                        </a>
-                    </div>
-                </li>
+                <div th:include="common :: top"></div>
             </ul>
         </nav>
         <div th:include="common :: navigator"></div>
@@ -140,76 +74,76 @@
                                         </div>
                                     </div>
                                     <!--<div class="row">-->
-                                        <!--<div class="form-group col-6">-->
-                                            <!--<label for="userMail">Email</label>-->
-                                            <!--<input id="userMail" type="email" th:value="${userInfoAlter.userMail}"-->
-                                                   <!--class="form-control" name="userMail">-->
-                                            <!--<div class="invalid-feedback">-->
-                                            <!--</div>-->
+                                    <!--<div class="form-group col-6">-->
+                                    <!--<label for="userMail">Email</label>-->
+                                    <!--<input id="userMail" type="email" th:value="${userInfoAlter.userMail}"-->
+                                    <!--class="form-control" name="userMail">-->
+                                    <!--<div class="invalid-feedback">-->
+                                    <!--</div>-->
 
-                                        <!--</div>-->
-                                        <!--<div class="form-group col-6">-->
-                                            <!--<label>部门</label>-->
-                                            <!--<select class="form-control" name="userDeptId" >-->
-                                                <!--<option th:each="dept:${depts}" th:value="${dept.deptId}" th:text="${dept.deptName}"-->
-                                                        <!--th:selected="${dept.deptId} == ${userInfoAlter.userDeptId} ? true :false"></option>-->
-                                            <!--</select>-->
-                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="form-group col-6">-->
+                                    <!--<label>部门</label>-->
+                                    <!--<select class="form-control" name="userDeptId" >-->
+                                    <!--<option th:each="dept:${depts}" th:value="${dept.deptId}" th:text="${dept.deptName}"-->
+                                    <!--th:selected="${dept.deptId} == ${userInfoAlter.userDeptId} ? true :false"></option>-->
+                                    <!--</select>-->
+                                    <!--</div>-->
                                     <!--</div>-->
                                     <!--<div class="row">-->
-                                        <!--<div class="form-group col-6">-->
-                                            <!--<label for="password" class="d-block">密码</label>-->
-                                            <!--<input id="password" type="password" class="form-control" name="password">-->
-                                        <!--</div>-->
-                                        <!--<div class="form-group col-6">-->
-                                            <!--<label for="password2" class="d-block">Password Confirmation</label>-->
-                                            <!--<input id="password2" type="password" class="form-control"-->
-                                                   <!--name="password-confirm">-->
-                                        <!--</div>-->
+                                    <!--<div class="form-group col-6">-->
+                                    <!--<label for="password" class="d-block">密码</label>-->
+                                    <!--<input id="password" type="password" class="form-control" name="password">-->
+                                    <!--</div>-->
+                                    <!--<div class="form-group col-6">-->
+                                    <!--<label for="password2" class="d-block">Password Confirmation</label>-->
+                                    <!--<input id="password2" type="password" class="form-control"-->
+                                    <!--name="password-confirm">-->
+                                    <!--</div>-->
                                     <!--</div>-->
                                     <!--<div class="row">-->
-                                        <!--<div class="form-group col-6">-->
-                                            <!--<label for="userPhone" class="d-block">电话</label>-->
-                                            <!--<input id="userPhone" type="text" class="form-control"-->
-                                                   <!--th:value="${userInfoAlter.userPhone}" name="userPhone">-->
-                                        <!--</div>-->
-                                        <!--&lt;!&ndash;<div class="form-group col-6">&ndash;&gt;-->
-                                        <!--&lt;!&ndash;<label>Country</label>&ndash;&gt;-->
-                                        <!--&lt;!&ndash;<select class="form-control">&ndash;&gt;-->
-                                        <!--&lt;!&ndash;<option>Indonesia</option>&ndash;&gt;-->
-                                        <!--&lt;!&ndash;<option>Palestine</option>&ndash;&gt;-->
-                                        <!--&lt;!&ndash;<option>Syria</option>&ndash;&gt;-->
-                                        <!--&lt;!&ndash;<option>Malaysia</option>&ndash;&gt;-->
-                                        <!--&lt;!&ndash;<option>Thailand</option>&ndash;&gt;-->
-                                        <!--&lt;!&ndash;</select>&ndash;&gt;-->
-                                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                                        <!--<div class="form-group col-6">-->
-                                            <!--<label>性别</label>-->
-                                            <!--<select class="form-control" name="userSex">-->
-                                                <!--<option th:selected="${userInfoAlter.userSex eq '男'? true:false}"-->
-                                                        <!--value="男">男-->
-                                                <!--</option>-->
-                                                <!--<option th:selected="${userInfoAlter.userSex eq '女'? true:false}"-->
-                                                        <!--value="女">女-->
-                                                <!--</option>-->
-                                            <!--</select>-->
-                                        <!--</div>-->
+                                    <!--<div class="form-group col-6">-->
+                                    <!--<label for="userPhone" class="d-block">电话</label>-->
+                                    <!--<input id="userPhone" type="text" class="form-control"-->
+                                    <!--th:value="${userInfoAlter.userPhone}" name="userPhone">-->
+                                    <!--</div>-->
+                                    <!--&lt;!&ndash;<div class="form-group col-6">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<label>Country</label>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<select class="form-control">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<option>Indonesia</option>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<option>Palestine</option>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<option>Syria</option>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<option>Malaysia</option>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<option>Thailand</option>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;</select>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                    <!--<div class="form-group col-6">-->
+                                    <!--<label>性别</label>-->
+                                    <!--<select class="form-control" name="userSex">-->
+                                    <!--<option th:selected="${userInfoAlter.userSex eq '男'? true:false}"-->
+                                    <!--value="男">男-->
+                                    <!--</option>-->
+                                    <!--<option th:selected="${userInfoAlter.userSex eq '女'? true:false}"-->
+                                    <!--value="女">女-->
+                                    <!--</option>-->
+                                    <!--</select>-->
+                                    <!--</div>-->
                                     <!--</div>-->
                                     <!--<div class="row">-->
-                                        <!--<div class="form-group col-6">-->
-                                            <!--<label>状态</label>-->
-                                            <!--<select class="form-control" name="userStatus">-->
-                                                <!--<option th:selected="${userInfoAlter.userStatus eq '1'? true:false}"value="1">在职</option>-->
-                                                <!--<option th:selected="${userInfoAlter.userStatus eq '0'? true:false}"value="0">离职</option>-->
-                                            <!--</select>-->
-                                        <!--</div>-->
-                                        <!--<div class="form-group col-6">-->
-                                            <!--<label>权限</label>-->
-                                            <!--<select class="form-control" name="userPower">-->
-                                                <!--<option  th:selected="${userInfoAlter.userStatus eq '0'? true:false}"value="0">普通用户</option>-->
-                                                <!--<option th:selected="${userInfoAlter.userStatus eq '1'? true:false} "value="1">管理员</option>-->
-                                            <!--</select>-->
-                                        <!--</div>-->
+                                    <!--<div class="form-group col-6">-->
+                                    <!--<label>状态</label>-->
+                                    <!--<select class="form-control" name="userStatus">-->
+                                    <!--<option th:selected="${userInfoAlter.userStatus eq '1'? true:false}"value="1">在职</option>-->
+                                    <!--<option th:selected="${userInfoAlter.userStatus eq '0'? true:false}"value="0">离职</option>-->
+                                    <!--</select>-->
+                                    <!--</div>-->
+                                    <!--<div class="form-group col-6">-->
+                                    <!--<label>权限</label>-->
+                                    <!--<select class="form-control" name="userPower">-->
+                                    <!--<option  th:selected="${userInfoAlter.userStatus eq '0'? true:false}"value="0">普通用户</option>-->
+                                    <!--<option th:selected="${userInfoAlter.userStatus eq '1'? true:false} "value="1">管理员</option>-->
+                                    <!--</select>-->
+                                    <!--</div>-->
                                     <!--</div>-->
                                     <!--<div class="row">-->
                                     <!--&lt;!&ndash;<div class="form-group col-6">&ndash;&gt;-->

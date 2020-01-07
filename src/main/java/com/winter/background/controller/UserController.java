@@ -68,6 +68,22 @@ public class UserController {
         return "UserAdd";
     }
 
+    @RequestMapping(value = "updateMyself")
+    public String updateMyself(HttpServletRequest request, Map<String, Object> paraMap) {
+        User user = new User();
+//        System.out.println(userId);
+        User loginUser = (User) request.getSession(true).getAttribute("loginUser");
+        user.setUserId(loginUser.getUserId());
+        List<User> userByExample = userService.getUserByExample(user);
+        User user1 = userByExample.get(0);
+        paraMap.put("userInfoAlter", user1);
+        paraMap.put("loginUserName", loginUser.getUserNickname());
+        paraMap.put("loginUserInfo", loginUser);
+        List<Dept> depts = deptService.getAll();
+        paraMap.put("depts", depts);
+        return "UserAlter.html";
+    }
+
     @RequestMapping(value = "UpdateUser")
     public String updateUser(@RequestParam("userName") String userName,
                              @RequestParam("userNickName") String userNickName,
@@ -162,7 +178,8 @@ public class UserController {
         System.out.println();
         System.out.println(
                 "add User"
-        );System.out.println(user);
+        );
+        System.out.println(user);
         userService.insertUser(user);
 
         return "redirect:/indexAction";

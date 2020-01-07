@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"
           name="viewport">
-    <title>Tables &rsaquo; Table &mdash; Stisla</title>
+    <title>更新用户</title>
 
     <link rel="stylesheet" href="../dist/modules/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../dist/modules/ionicons/css/ionicons.min.css">
@@ -32,73 +32,7 @@
                 </div>
             </form>
             <ul class="navbar-nav navbar-right">
-                <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
-                                                             class="nav-link notification-toggle nav-link-lg beep"><i
-                        class="ion ion-ios-bell-outline"></i></a>
-                    <div class="dropdown-menu dropdown-list dropdown-menu-right">
-                        <div class="dropdown-header">Notifications
-                            <div class="float-right">
-                                <a href="#">View All</a>
-                            </div>
-                        </div>
-                        <div class="dropdown-list-content">
-                            <a href="#" class="dropdown-item dropdown-item-unread">
-                                <img alt="image" src="../dist/img/avatar/avatar-1.jpeg"
-                                     class="rounded-circle dropdown-item-img">
-                                <div class="dropdown-item-desc">
-                                    <b>Kusnaedi</b> has moved task <b>Fix bug header</b> to <b>Done</b>
-                                    <div class="time">10 Hours Ago</div>
-                                </div>
-                            </a>
-                            <a href="#" class="dropdown-item dropdown-item-unread">
-                                <img alt="image" src="../dist/img/avatar/avatar-2.jpeg"
-                                     class="rounded-circle dropdown-item-img">
-                                <div class="dropdown-item-desc">
-                                    <b>Ujang Maman</b> has moved task <b>Fix bug footer</b> to <b>Progress</b>
-                                    <div class="time">12 Hours Ago</div>
-                                </div>
-                            </a>
-                            <a href="#" class="dropdown-item">
-                                <img alt="image" src="../dist/img/avatar/avatar-3.jpeg"
-                                     class="rounded-circle dropdown-item-img">
-                                <div class="dropdown-item-desc">
-                                    <b>Agung Ardiansyah</b> has moved task <b>Fix bug sidebar</b> to <b>Done</b>
-                                    <div class="time">12 Hours Ago</div>
-                                </div>
-                            </a>
-                            <a href="#" class="dropdown-item">
-                                <img alt="image" src="../dist/img/avatar/avatar-4.jpeg"
-                                     class="rounded-circle dropdown-item-img">
-                                <div class="dropdown-item-desc">
-                                    <b>Ardian Rahardiansyah</b> has moved task <b>Fix bug navbar</b> to <b>Done</b>
-                                    <div class="time">16 Hours Ago</div>
-                                </div>
-                            </a>
-                            <a href="#" class="dropdown-item">
-                                <img alt="image" src="../dist/img/avatar/avatar-5.jpeg"
-                                     class="rounded-circle dropdown-item-img">
-                                <div class="dropdown-item-desc">
-                                    <b>Alfa Zulkarnain</b> has moved task <b>Add logo</b> to <b>Done</b>
-                                    <div class="time">Yesterday</div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg">
-                    <i class="ion ion-android-person d-lg-none"></i>
-                    <div class="d-sm-none d-lg-inline-block">Hi,[[${loginUserName}]]</div>
-                </a>
-                    <div class="dropdown-menu dropdown-menu-right">
-
-                        <a href="/" class="dropdown-item has-icon">
-                            <i class="ion ion-android-person"></i> 个人资料
-                        </a>
-                        <a href="#" class="dropdown-item has-icon">
-                            <i class="ion ion-log-out"></i> 退出
-                        </a>
-                    </div>
-                </li>
+                <div th:include="common :: top"></div>
             </ul>
         </nav>
         <div th:include="common :: navigator"></div>
@@ -136,7 +70,7 @@
                                         <div class="form-group col-6">
                                             <label>部门</label>
                                             <select class="form-control" name="userDeptId" >
-                                                <option th:each="dept:${depts}" th:value="${dept.deptId}" th:text="${dept.deptName}"
+                                                <option th:each="dept:${depts}" th:value="${dept.deptId}" th:text="${dept.deptName}+'-'+${dept.deptRegionName}"
                                                         th:selected="${dept.deptId} == ${userInfoAlter.userDeptId} ? true :false"></option>
                                             </select>
                                         </div>
@@ -220,7 +154,7 @@
 
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-block">
-                                            注册
+                                            更新
                                         </button>
                                     </div>
                                 </form>

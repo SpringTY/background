@@ -26,7 +26,7 @@
             <ul class="sidebar-menu">
                 <!--<li class="menu-header">用户</li>-->
                 <li>
-                    <a href="/"><i class="ion ion-speedometer"></i><span>个人资料</span></a>
+                    <a href="/updateMyself"><i class="ion ion-speedometer"></i><span>个人资料</span></a>
                 </li>
 
                 <!--<li class="menu-header">用户管理</li>-->
@@ -54,5 +54,21 @@
             </ul>
         </aside>
     </div>
+</common>
+<common th:fragment="top">
+    <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg">
+        <i class="ion ion-android-person d-lg-none"></i>
+        <div class="d-sm-none d-lg-inline-block">Hi,[[${loginUserName}]]</div>
+    </a>
+        <div class="dropdown-menu dropdown-menu-right">
+
+            <a href="/updateMyself" class="dropdown-item has-icon">
+                <i class="ion ion-android-person"></i> 个人资料
+            </a>
+            <a href="/loginOut" class="dropdown-item has-icon">
+                <i class="ion ion-log-out"></i> 退出
+            </a>
+        </div>
+    </li>
 </common>
 </html>
