@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<common th:fragment="navigator">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<common th:fragment="navigator" >
     <div class="main-sidebar">
         <aside id="sidebar-wrapper">
             <div class="sidebar-brand">
@@ -46,12 +46,17 @@
                         <a href="#" class="has-dropdown"><i class="ion ion-flag"></i><span>部门管理</span></a>
                         <ul class="menu-dropdown">
                             <li><a href="/deptInfoAction"><i class="ion ion-ios-circle-outline"></i>部门信息</a></li>
-                            <li><a href="/deptAdd"><i class="ion ion-ios-circle-outline"></i> 添加部门</a>
-                            </li>
-                            <li><a href="DeptSelect.html"><i class="ion ion-ios-circle-outline"></i> 查找部门</a></li>
-                            <li><a href="DeptUpdate.html"><i class="ion ion-ios-circle-outline"></i> 修改部门</a></li>
+                            <li><a href="/deptAdd"><i class="ion ion-ios-circle-outline"></i> 添加部门</a></li>
                         </ul>
                     </li>
+
+                    <li>
+                        <a href="#" class="has-dropdown"><i class="ion ion-flag"></i><span>地区管理</span></a>
+                        <ul class="menu-dropdown">
+                            <li><a href="/SelectUserByDeptAndDeptRegion"><i class="ion ion-ios-circle-outline"></i>地区查询</a></li>
+                        </ul>
+                    </li>
+
                 </ul>
             </div>
         </aside>
@@ -74,3 +79,4 @@
     </li>
 </common>
 </html>
+

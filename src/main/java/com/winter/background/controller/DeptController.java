@@ -89,6 +89,5 @@ public class DeptController {
         return "redirect:/deptInfoAction";
     }
 
-//    @RequestMapping("selectDept")
 
 }

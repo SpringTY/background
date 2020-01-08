@@ -137,7 +137,7 @@ public class UserController {
     @PostMapping(value = "updateUserAction")
     public String update(User form) {
 
-        String userName = user.getUserName();
+        String userName = form.getUserName();
         User example = new User();
         example.setUserName(userName);
         List<User> userByExample = userService.getUserByExample(example);
@@ -209,7 +209,8 @@ public class UserController {
     }
 
     @GetMapping(value = "updateUser")
-    public String updateUser(String userId, Map<String, Object> paraMap, HttpServletRequest request) {
+    public String updateUser(String userId,
+                             Map<String, Object> paraMap, HttpServletRequest request) {
         User user = new User();
 //        System.out.println(userId);
         user.setUserId(Integer.parseInt(userId));
@@ -267,6 +268,35 @@ public class UserController {
             }
         }
         paraMap.put("UsersInfo", result);
+        return "Users.html";
+    }
+
+    @RequestMapping("SelectUserByDeptAndDeptRegion")
+    public String selectUserByDeptAndDeptRegion(HttpServletRequest request,
+                                                Map<String, Object> paraMap) {
+        User loginUser = (User) request.getSession(true).getAttribute("loginUser");
+        paraMap.put("loginUserName", loginUser.getUserNickname());
+        paraMap.put("loginUserInfo", loginUser);
+        return "DeptRegionSelect.html";
+    }
+
+    @RequestMapping("SelectUserByDeptAndDeptRegionA")
+    public String selectUserByDeptAndDeptRegionA(HttpServletRequest request,
+                                                 Map<String, Object> paraMap,
+                                                 @RequestParam("deptName") String deptName,
+                                                 @RequestParam("deptRegionName") String deptRegionName) {
+        User loginUser = (User) request.getSession(true).getAttribute("loginUser");
+        paraMap.put("loginUserName", loginUser.getUserNickname());
+        paraMap.put("loginUserInfo", loginUser);
+        System.out.println("+-+-=-=-=-=-=-=-=-=-=-=-=-=-+_+_+_+-=-=-=-=");
+        System.out.println(deptName);
+        System.out.println(deptRegionName);
+        UserDeptView userDeptView = new UserDeptView();
+        userDeptView.setDeptId(Integer.parseInt(deptName));
+        userDeptView.setDeptRegionName(deptRegionName);
+        List<UserDeptView> users = test.getUserDeptViewByExample(userDeptView);
+        System.out.println(users);
+        paraMap.put("UsersInfo", users);
         return "Users.html";
     }
 }

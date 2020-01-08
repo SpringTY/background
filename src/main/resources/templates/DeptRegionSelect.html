@@ -39,25 +39,25 @@
         <div class="main-content">
             <section class="section">
                 <h1 class="section-header">
-                    <div>修改部门</div>
+                    <div>查找</div>
                 </h1>
                 <div class="section-body">
                     <div class="row">
                         <div class="col-12 col-md-12 col-lg-12">
                             <div class="card-body">
-                                <form ID="deptalter" method="POST" action="/updateDeptAction">
+                                <form ID="deptalter" method="POST" action="/SelectUserByDeptAndDeptRegionA">
                                     <div class="row">
                                         <div class="form-group col-6">
                                             <label>部门名称</label>
                                             <select class="form-control" name="deptName">
-                                                <option value="销售部">总理办公室</option>
-                                                <option value="财务部">行政部</option>
-                                                <option value="后勤部">人力资源部</option>
-                                                <option value="保安部">财务部</option>
-                                                <option value="营运部">生产技术部</option>
-                                                <option value="客服部">计划营销部</option>
-                                                <option value="采购部">安全监察部</option>
-                                                <option value="电脑室">营运部</option>
+                                                <option value="1">总理办公室</option>
+                                                <option value="8">行政部</option>
+                                                <option value="9">人力资源部</option>
+                                                <option value="10">财务部</option>
+                                                <option value="11">生产技术部</option>
+                                                <option value="12">计划营销部</option>
+                                                <option value="13">安全监察部</option>
+                                                <option value="14">营运部</option>
                                             </select>
                                         </div>
                                         <div class="form-group col-6">
@@ -169,7 +169,7 @@
 
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-block">
-                                            注册
+                                            查询
                                         </button>
                                     </div>
                                 </form>

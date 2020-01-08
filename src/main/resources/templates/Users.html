@@ -226,6 +226,8 @@
             methods: {
                 change: function (id) {
                     window.location = "/updateUser?userId=" + id;
+                },send: function () {
+                    
                 },
                 getPage: function () {
                     this.PageNum = Math.ceil(this.UsersInfo.length / this.PageSize) || 1;
